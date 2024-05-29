@@ -1,0 +1,16 @@
+{
+  "name": "squadeasy-api",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build": "tsp compile .",
+    "compile-zod-client": "openapi-zod-client ./tsp-output/@typespec/openapi3/openapi.yaml",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@typespec/compiler": "latest",
+    "@typespec/http": "latest",
+    "@typespec/openapi3": "latest"
+  },
+  "private": true
+}
