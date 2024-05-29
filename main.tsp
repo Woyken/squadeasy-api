@@ -2,6 +2,12 @@ import "@typespec/http";
 
 using TypeSpec.Http;
 
+@server("https://api-challenge.squadeasy.com", "API endpoint")
+@service({
+  title: "SquadEasy API",
+})
+namespace SquadEasyApi;
+
 model ImageData {
   @header contentType: "multipart/form-data";
 
