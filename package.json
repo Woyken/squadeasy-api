@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "build": "tsp compile .",
+    "build-tsp-yaml": "tsp compile . --options=@typespec/openapi3.file-type=yaml",
+    "build-tsp-json": "tsp compile . --options=@typespec/openapi3.file-type=json",
+    "build": "concurrently \"npm:build-tsp-*\"",
     "compile-zod-client": "openapi-zod-client ./tsp-output/@typespec/openapi3/openapi.yaml",
     "test": "vitest"
   },
@@ -12,5 +14,8 @@
     "@typespec/http": "latest",
     "@typespec/openapi3": "latest"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
 }
