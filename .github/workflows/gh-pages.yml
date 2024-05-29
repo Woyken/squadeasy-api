@@ -26,6 +26,10 @@ jobs:
         with:
           version: 8
           run_install: true
+
+      - name: Run build
+        run: pnpm build
+
       - name: Start serve process
         run: |
           pnpm serve &
