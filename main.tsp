@@ -30,6 +30,12 @@ model ImageData {
   image: string;
 }
 
+model TokenResponse {
+  accessToken: string;
+  refreshToken: string;
+}
+
+@tag("Authentication")
 interface Authentication {
   @route("/api/3.0/auth/login")
   @post
@@ -38,10 +44,11 @@ interface Authentication {
       email: string;
       password: string;
     },
-  ): {
-    accessToken: string;
-    refreshToken: string;
-  };
+  ): TokenResponse;
+
+  @route("/api/3.0/auth/refresh-token")
+  @post
+  refreshToken(@header `Refresh-Token`: string): TokenResponse;
 }
 
 enum UserStatus {
