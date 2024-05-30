@@ -227,3 +227,89 @@ interface Activity {
   @get
   activityHistory(@path("id") id: string): ActivityHistory;
 }
+
+model RankingTeam {
+  id: string;
+  name: string;
+  points: int32;
+  rank: int32;
+  image: null | url;
+}
+
+model RankingMedal {
+  id: string;
+  minimalRank: int32;
+  image: url;
+  defaultImage: string;
+  color: string;
+  description: string;
+  name: string;
+}
+
+@tag("Ranking")
+interface Ranking {
+  @route("/api/2.0/my/ranking/season")
+  @get
+  rankingSeason(): {
+    rank: int32;
+    teams: RankingTeam[];
+    medals: RankingMedal[];
+  };
+
+  rankingGlobal(): {
+    rank: int32;
+    teams: RankingTeam[];
+    medals: RankingMedal[];
+  };
+}
+
+model Team {
+  name: string;
+  id: string;
+  isDestructible: boolean;
+  spaceId: string;
+  captainId: string;
+  image: null | url;
+  rank: int32;
+  totalPoints: null | int32;
+  users: string[];
+  isPrivate: boolean;
+}
+
+model TeamDetails {
+  id: string;
+  totalPoints: int32;
+  rank: int32;
+  image: null | url;
+  name: string;
+  code: string;
+  captainId: string;
+  isPrivate: boolean;
+  users: {
+    id: string;
+    points: int32;
+    firstName: string;
+    lastName: string;
+    image: null | url;
+    isActivityPublic: boolean;
+    isCaptain: boolean;
+    isBoostable: boolean;
+    boostCount: int32;
+  }[];
+  boostAvailableAt?: utcDateTime;
+}
+
+@tag("Team")
+interface TeamService {
+  @route("/api/2.0/teams")
+  @get
+  teams(): Team[];
+
+  @route("/api/2.0/teams/{id}")
+  @get
+  teamDetails(@path("id") id: string): TeamDetails;
+
+  @route("/api/2.0/my/team")
+  @get
+  myTeam(): TeamDetails;
+}
