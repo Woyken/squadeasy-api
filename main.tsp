@@ -87,7 +87,8 @@ model SocialPost {
   comments: unknown[];
 }
 
-interface Account {
+@tag("User")
+interface User {
   @route("/api/2.0/my/image")
   @post
   uploadImage(...ImageData): CreatedResponse & Body<{}>;
@@ -128,7 +129,7 @@ interface Account {
 
   @route("/api/2.0/my/user")
   @patch
-  changeUser(
+  updateUser(
     @body body: {
       firstName?: string;
       lastName?: string;
@@ -144,7 +145,10 @@ interface Account {
     id: string;
     userRole: "user" | string;
   };
+}
 
+@tag("Social")
+interface Social {
   @route("/api/3.0/social/posts")
   @get
   posts(): SocialPost[];
