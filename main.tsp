@@ -89,6 +89,72 @@ model SocialPost {
   comments: unknown[];
 }
 
+model UserDetails {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  userRole: "user" | string;
+  userStatus: UserStatus;
+  imageUpdatedAt: utcDateTime;
+  isActivityPublic: boolean;
+  spaceId: string;
+  teamId: string;
+  languageCode: "en" | string;
+  entityId: string | null;
+  platform: "Android" | string;
+  platformVersion: string;
+  clientVersion: string;
+  platformName: string;
+  lastConnectionDate: utcDateTime;
+  consentDataShareDate: utcDateTime;
+  consentBasicsDate: utcDateTime;
+  cheatLevel: "CLEAR" | string;
+  image: string;
+  isCaptain: boolean;
+  boostCount: int32;
+}
+
+model UserStatistics {
+  id: string;
+  firstName: string;
+  lastName: string;
+  entityName: null;
+  teamName: string;
+  teamId: string;
+  totalPoints: int32;
+  image: null | url;
+  isActivityPublic: boolean;
+  activities: {
+    type: "socialtag" | "quiz" | "mission" | "walk" | "gps" | string;
+    points: int32;
+    activityId:
+      | "socialtag"
+      | "quiz"
+      | "mission"
+      | "walk"
+      | "statistic_walk"
+      | "statistic_run"
+      | "active_walk"
+      | "bike"
+      | string;
+    value: int32;
+    title:
+      | "statistic_socialtag"
+      | "statistic_quiz"
+      | "statistic_mission"
+      | "statistic_active_walk"
+      | "statistic_bike"
+      | string;
+    isHistoryEmpty: boolean;
+  }[];
+  isBoostable: boolean;
+  boostedBy: string[];
+  boostCount: int32;
+  boostEndAt: utcDateTime[];
+  isBlocked: boolean;
+}
+
 @tag("User")
 interface User {
   @route("/api/2.0/my/image")
@@ -103,31 +169,7 @@ interface User {
 
   @route("/api/2.0/my/user")
   @get
-  user(): {
-    id: string;
-    firstName: string;
-    lastName: string;
-    email: string;
-    userRole: "user" | string;
-    userStatus: UserStatus;
-    imageUpdatedAt: utcDateTime;
-    isActivityPublic: boolean;
-    spaceId: string;
-    teamId: string;
-    languageCode: "en" | string;
-    entityId: string | null;
-    platform: "Android" | string;
-    platformVersion: string;
-    clientVersion: string;
-    platformName: string;
-    lastConnectionDate: utcDateTime;
-    consentDataShareDate: utcDateTime;
-    consentBasicsDate: utcDateTime;
-    cheatLevel: "CLEAR" | string;
-    image: string;
-    isCaptain: boolean;
-    boostCount: int32;
-  };
+  user(): UserDetails;
 
   @route("/api/2.0/my/user")
   @patch
@@ -147,6 +189,28 @@ interface User {
     id: string;
     userRole: "user" | string;
   };
+
+  @route("/api/2.0/users")
+  @get
+  getAllUsers(): {
+    id: string;
+    firstName: string;
+    lastName: string;
+    isPublic: boolean;
+    teamId: string;
+    entityId: null;
+    boostCount: int32;
+    entityName: null;
+    image: null | url;
+  }[];
+
+  @route("/api/2.0/users/{id}")
+  @get
+  getUser(@path("id") id: string): UserDetails;
+
+  @route("/api/2.0/users/{id}/statistics")
+  @get
+  getUserStatistics(@path("id") id: string): UserStatistics;
 }
 
 @tag("Social")
