@@ -163,3 +163,67 @@ interface Social {
     },
   ): SocialPost;
 }
+
+model ActivityHistory {
+  id: string;
+  name: "Fast walking" | "Run" | string;
+  icon: url;
+  startAt: utcDateTime;
+  endAt: utcDateTime;
+  polylines: string[];
+  duration: int32;
+  distance: int32;
+  elevation: int32;
+  points: int32;
+  source: "GARMIN" | string;
+  cheat: boolean;
+  co2ComparisonSource: "datagir" | string;
+  mobilityReason: "Recreational sports" | string;
+  isActivityShared: boolean;
+  activities: unknown[];
+  speed: float64;
+  pace: float64;
+  status: "OK" | string;
+  externalActivityUrl: null | unknown;
+}
+
+model ActivityHistoryList {
+  filters: {
+    filterBy: "MONTH" | string;
+    sinceDate: utcDateTime;
+    minDatePossible: utcDateTime;
+    maxDatePossible: utcDateTime;
+  };
+  highlights: {
+    name: string;
+    value: int32;
+    SIType: string;
+  }[];
+  activities: {
+    id: string;
+    name: string;
+    icon: url;
+    date: utcDateTime;
+    duration: int32;
+    distance: int32;
+    points: int32;
+    status: string;
+    command: {
+      name: string;
+      params: {
+        ACTIVITY_ID: string;
+      };
+    };
+  }[];
+}
+
+@tag("Activity")
+interface Activity {
+  @route("/api/4.0/histories/gps")
+  @get
+  activityHistoryList(): ActivityHistoryList;
+
+  @route("/api/4.0/histories/gps/{id}")
+  @get
+  activityHistory(@path("id") id: string): ActivityHistory;
+}
