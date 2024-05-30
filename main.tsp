@@ -21,6 +21,7 @@ All other endpoints will require accessToken in Authorization header
 @service({
   title: "SquadEasy API",
 })
+@useAuth(BearerAuth)
 namespace SquadEasyApi;
 
 model ImageData {
@@ -37,6 +38,7 @@ model TokenResponse {
 
 @tag("Authentication")
 interface Authentication {
+  @useAuth(NoAuth)
   @route("/api/3.0/auth/login")
   @post
   login(
