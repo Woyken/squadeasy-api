@@ -208,7 +208,7 @@ interface User {
   @get
   getUser(@path("id") id: string): UserDetails;
 
-  @route("2.0/users/{id}/boost")
+  @route("/api/2.0/users/{id}/boost")
   @post
   boostUser(@path("id") id: string): unknown;
 
