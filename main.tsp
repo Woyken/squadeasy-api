@@ -381,3 +381,22 @@ interface TeamService {
   @get
   myTeam(): TeamDetails;
 }
+
+model MyChallenge {
+  spaceImage: url;
+  image: url;
+  startAt: utcDateTime;
+  endAt: utcDateTime;
+  title: string;
+  tagline: string;
+  description: string;
+  statistics: unknown;
+  deletionDate: null | utcDateTime;
+}
+
+@tag("Challenge")
+interface ChallengeService {
+  @route("/api/3.0/my/challenge")
+  @get
+  myChallenge(): MyChallenge;
+}
