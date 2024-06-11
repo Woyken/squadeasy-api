@@ -217,6 +217,18 @@ interface User {
   getUserStatistics(@path("id") id: string): UserStatistics;
 }
 
+model SocialTag {
+  id: string;
+  remaining: int32;
+  availability: "WEEKLY" | "DAILY" | string;
+  occurrence: int32;
+  points: int32;
+  date: utcDateTime;
+  image: url;
+  name: string;
+  description: string;
+}
+
 @tag("Social")
 interface Social {
   @route("/api/3.0/social/posts")
@@ -230,6 +242,13 @@ interface Social {
       message: string;
     },
   ): SocialPost;
+
+  @route("/api/2.0/socialTags/list")
+  @get
+  getSocialTags(): {
+    ongoing: SocialTag[];
+    upcoming: SocialTag[];
+  };
 }
 
 model ActivityHistory {
