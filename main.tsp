@@ -229,6 +229,15 @@ model SocialTag {
   description: string;
 }
 
+// Post can eb made with json or form data
+// model SocialPostFormData {
+//   @header contentType: "multipart/form-data";
+//   message?: string;
+//   socialtagId?: string;
+//   @format("binary")
+//   image?: string;
+// }
+
 @tag("Social")
 interface Social {
   @route("/api/3.0/social/posts")
@@ -242,6 +251,14 @@ interface Social {
       message: string;
     },
   ): SocialPost;
+
+  // @route("/api/3.0/social/posts")
+  // @post
+  // createPostWithImage(...SocialPostFormData): unknown;
+
+  @route("/api/3.0/social/posts/{post_id}/like")
+  @put
+  likePost(@path("post_id") postId: string): unknown;
 
   @route("/api/2.0/socialTags/list")
   @get
