@@ -233,7 +233,7 @@ model SocialTag {
 interface Social {
   @route("/api/3.0/social/posts")
   @get
-  posts(): SocialPost[];
+  posts(@query sincePostId?: string): SocialPost[];
 
   @route("/api/3.0/social/posts")
   @post
