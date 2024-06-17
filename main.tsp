@@ -360,6 +360,8 @@ interface Ranking {
     medals: RankingMedal[];
   };
 
+  @route("/api/2.0/my/ranking/global")
+  @get
   rankingGlobal(): {
     rank: int32;
     teams: RankingTeam[];
