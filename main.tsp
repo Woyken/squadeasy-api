@@ -1,34 +1,28 @@
 import "@typespec/http";
 
-using TypeSpec.Http;
-
+using Http;
 @doc("""
-SquadEasy API
-
-Reverse engineered API from SquadEasy app (`co.livehappier.squadV2`)
-
-Repo: <https://github.com/Woyken/squadeasy-api>
-
-Authorization flow:
-
-`POST /api/3.0/auth/login` with email and password, returns accessToken and refreshToken
-
-`POST /api/3.0/auth/refresh-token` to refresh token after it expires
-
-All other endpoints will require accessToken in Authorization header
-""")
+  SquadEasy API
+  
+  Reverse engineered API from SquadEasy app (`co.livehappier.squadV2`)
+  
+  Repo: <https://github.com/Woyken/squadeasy-api>
+  
+  Authorization flow:
+  
+  `POST /api/3.0/auth/login` with email and password, returns accessToken and refreshToken
+  
+  `POST /api/3.0/auth/refresh-token` to refresh token after it expires
+  
+  All other endpoints will require accessToken in Authorization header
+  """)
 @server("https://api-challenge.squadeasy.com", "API endpoint")
-@service({
-  title: "SquadEasy API",
-})
+@service(#{ title: "SquadEasy API" })
 @useAuth(BearerAuth)
 namespace SquadEasyApi;
 
 model ImageData {
-  @header contentType: "multipart/form-data";
-
-  @format("binary")
-  image: string;
+  image: HttpPart<File>;
 }
 
 model TokenResponse {
@@ -159,7 +153,10 @@ model UserStatistics {
 interface User {
   @route("/api/2.0/my/image")
   @post
-  uploadImage(...ImageData): CreatedResponse & Body<{}>;
+  uploadImage(
+    @header `content-type`: "multipart/form-data",
+    @multipartBody body: ImageData,
+  ): CreatedResponse & Body<{}>;
 
   @route("/api/3.0/user-status")
   @get

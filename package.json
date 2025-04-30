@@ -6,17 +6,17 @@
     "build-tsp-json": "tsp compile . --options=@typespec/openapi3.file-type=json",
     "build-tsp-yaml": "tsp compile . --options=@typespec/openapi3.file-type=yaml",
     "build": "concurrently \"npm:build-tsp-*\"",
-    "compile-zod-client": "openapi-zod-client ./tsp-output/@typespec/openapi3/openapi.yaml",
-    "serve": "scalar serve tsp-output/@typespec/openapi3/openapi.json",
+    "compile-zod-client": "openapi-zod-client ./tsp-output/schema/openapi.yaml",
+    "serve": "scalar serve tsp-output/schema/openapi.json",
     "test": "vitest"
-  },
-  "dependencies": {
-    "@typespec/compiler": "latest",
-    "@typespec/http": "latest",
-    "@typespec/openapi3": "latest"
   },
   "private": true,
   "devDependencies": {
+    "@typespec/compiler": "latest",
+    "@typespec/http": "latest",
+    "@typespec/rest": "latest",
+    "@typespec/openapi": "latest",
+    "@typespec/openapi3": "latest",
     "@scalar/cli": "^0.2.97",
     "concurrently": "^8.2.2"
   }

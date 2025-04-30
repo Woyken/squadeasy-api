@@ -53,7 +53,7 @@ jobs:
       - name: Move to dist
         run: |
           mkdir dist
-          mv tsp-output/@typespec/openapi3/* dist/
+          mv tsp-output/schema/* dist/
           mv index.html dist/
 
       - name: Setup Pages
