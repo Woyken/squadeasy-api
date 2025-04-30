@@ -318,6 +318,11 @@ model ActivityHistoryList {
   }[];
 }
 
+model StepsRemoteEntity {
+  time: utcDateTime;
+  steps: int32;
+}
+
 @tag("Activity")
 interface Activity {
   @route("/api/4.0/histories/gps")
@@ -327,6 +332,13 @@ interface Activity {
   @route("/api/4.0/histories/gps/{id}")
   @get
   activityHistory(@path("id") id: string): ActivityHistory;
+
+  @route("/api/2.0/my/activities/{id}")
+  @post
+  submitStepsForActivity(
+    @path("id") id: string,
+    @body body: StepsRemoteEntity[],
+  ): void;
 }
 
 model RankingTeam {
