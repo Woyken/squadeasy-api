@@ -77,7 +77,15 @@ model UserRemoteEntity {
 }
 
 // @Json(name = "activityId") @NotNull String id, @Json(name = "type") @NotNull String type, @Json(name = "points") int i2, @Json(name = "value") int i3, @Json(name = "title") @NotNull String title, @Json(name = "isHistoryEmpty") boolean z
-model UserActivityStatsRemoteEntity {}
+model UserActivityStatsRemoteEntity {
+    activityId: string;
+    type: string;
+    points: int32;
+    value: int32;
+    title: string;
+    isHistoryEmpty: boolean;
+}
+
 // @Json(name = "id") @NotNull String id, @Json(name = "firstName") @NotNull String firstName, @Json(name = "lastName") @NotNull String lastName, @Json(name = "image") @Nullable String str, @Json(name = "publicImage") @Nullable String str2, @Json(name = "teamId") @Nullable String str3, @Json(name = "teamName") @Nullable String str4, @Json(name = "totalPoints") int i2, @Json(name = "isActivityPublic") boolean z, @Json(name = "boostedBy") @NotNull List<String> boostedBy, @Json(name = "isBoostable") boolean z2, @Json(name = "activities") @Nullable List<UserActivityStatsRemoteEntity> list, @Json(name = "entityName") @Nullable String str5, @Json(name = "isBlocked") boolean z3
 model UserStatsRemoteEntity {
     id: string;
@@ -105,7 +113,13 @@ model UserProfileBoostedByRemoteEntity {
 }
 
 // @Json(name = "id") @NotNull String id, @Json(name = "name") @NotNull String name, @Json(name = "value") double d2, @Json(name = "SIType") @NotNull String type
-model UserProfileActivityRemoteEntity {}
+model UserProfileActivityRemoteEntity {
+    id: string;
+    name: string;
+    value: float;
+    SIType: string;
+}
+
 // @Json(name = "id") @NotNull String id, @Json(name = "isCurrentUser") boolean z, @Json(name = "name") @NotNull String name, @Json(name = "teamName") @NotNull String teamName, @Json(name = "entityName") @Nullable String str, @Json(name = "isInSameTeam") boolean z2, @Json(name = "imageUrl") @Nullable String str2, @Json(name = "isBlocked") boolean z3, @Json(name = "isPrivate") boolean z4, @Json(name = "isBoostable") boolean z5, @Json(name = "canSendMessage") boolean z6, @Json(name = "points") @Nullable String str3, @Json(name = "boostedBy") @Nullable List<UserProfileBoostedByRemoteEntity> list, @Json(name = "activities") @Nullable List<UserProfileActivityRemoteEntity> list2
 model UserProfileRemoteEntity {
     id: string;
