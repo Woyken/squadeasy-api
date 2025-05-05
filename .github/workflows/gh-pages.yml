@@ -42,6 +42,9 @@ jobs:
       - name: Make wget request and save to index.html
         run: wget -O index.html http://localhost:3000
 
+      - name: Make wget request and save to microservice-api.html
+        run: wget -O microservice-api.html http://localhost:3001
+
       - name: Stop process
         run: kill $(cat process.pid)
         shell: bash
@@ -50,11 +53,16 @@ jobs:
         run: sed -i -e 's#data-proxy-url="https://proxy.scalar.com"##g' index.html
         shell: bash
 
+      - name: Remove default proxy
+        run: sed -i -e 's#data-proxy-url="https://proxy.scalar.com"##g' microservice-api.html
+        shell: bash
+
       - name: Move to dist
         run: |
           mkdir dist
           mv tsp-output/schema/* dist/
           mv index.html dist/
+          mv microservice-api.html dist/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

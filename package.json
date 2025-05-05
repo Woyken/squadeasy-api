@@ -6,8 +6,11 @@
     "build-tsp-json": "tsp compile . --options=@typespec/openapi3.file-type=json",
     "build-tsp-yaml": "tsp compile .",
     "build": "concurrently \"npm:build-tsp-*\"",
-    "compile-zod-client": "openapi-zod-client ./tsp-output/schema/openapi.yaml",
-    "serve": "scalar serve tsp-output/schema/openapi.json",
+    "compile-zod-client": "openapi-zod-client ./tsp-output/schema/openapi.SquadEasyApi.yaml",
+    "compile-zod-ms-client": "openapi-zod-client ./tsp-output/schema/openapi.SquadEasyMSApi.yaml",
+    "serve": "concurrently \"npm:serve-*\"",
+    "serve-main": "scalar serve tsp-output/schema/openapi.SquadEasyApi.json --port 3000",
+    "serve-ms": "scalar serve tsp-output/schema/openapi.SquadEasyMSApi.json --port 3001",
     "test": "vitest"
   },
   "private": true,
