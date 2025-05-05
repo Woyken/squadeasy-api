@@ -3,12 +3,6 @@ using Http;
 
 namespace SquadEasyApi;
 
-model FitbitAuthRemoteEntity {
-    access_token: string;
-    refresh_token: string;
-    expires_in: int32;
-}
-
 // @Json(name = "code") @NotNull String code
 model SpaceCodeBodyRemoteEntity {
     code: string;
