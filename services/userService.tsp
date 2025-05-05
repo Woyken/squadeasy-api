@@ -151,95 +151,91 @@ model UserBlockedRemoteEntity {
 interface UserService {
     @route("3.0/users/me/accept-legals-consent")
     @post
-    postTODO3_0_users_me_accept_legals_consent(
+    acceptLegalConsent(
         @body userLegalConsentRemoteEntity: UserLegalConsentRemoteEntity,
     ): void;
 
     @route("2.0/users/{id}/boost")
     @post
-    postTODO2_0_users__id__boost(@path id: string): void;
+    boostUser(@path id: string): void;
 
     @route("3.0/user-status")
     @get
-    getTODO3_0_user_status(): UserStatusRemoteEntity;
+    getUserStatus(): UserStatusRemoteEntity;
 
     @route("3.0/users/me/accept-legals-consent")
     @get
-    getTODO3_0_users_me_accept_legals_consent(): string[];
+    getAcceptedLegalConsents(): string[];
 
     @route("2.0/my/user")
     @patch
-    patchTODO2_0_my_user(
-        @body userEditRemoteEntity: UserEditRemoteEntity,
-    ): void;
+    updateCurrentUser(@body userEditRemoteEntity: UserEditRemoteEntity): void;
 
     @route("2.0/my/password")
     @patch
-    patchTODO2_0_my_password(
+    updatePassword(
         @body userPasswordRemoteEntity: UserPasswordRemoteEntity,
     ): void;
 
     @route("2.0/users/{id}/block")
     @post
-    postTODO2_0_users__id__block(@path id: string): void;
+    blockUser(@path id: string): void;
 
     @route("2.0/users/search")
     @post
-    postTODO2_0_users_search(
+    searchUsers(
         @body teamSearchBodyRemoteEntity: TeamSearchBodyRemoteEntity,
     ): UserSearchRemoteEntity[];
 
     @route("3.0/user-classifications")
     @get
-    getTODO3_0_user_classifications(): UserClassificationsRemoteEntity;
+    getUserClassifications(): UserClassificationsRemoteEntity;
 
     @route("2.0/my/user")
     @delete
-    deleteTODO2_0_my_user(): void;
+    deleteCurrentUser(): void;
 
     @route("2.0/users/{id}/unblock")
     @post
-    postTODO2_0_users__id__unblock(@path id: string): void;
+    unblockUser(@path id: string): void;
 
     @route("2.0/users/{id}")
     @get
-    getTODO2_0_users__id_(@path id: string): UserRemoteEntity;
+    getUser(@path id: string): UserRemoteEntity;
 
     @route("2.0/users/{id}/statistics")
     @get
-    getTODO2_0_users__id__statistics(@path id: string): UserStatsRemoteEntity;
+    getUserStatistics(@path id: string): UserStatsRemoteEntity;
 
     @route("2.0/users")
     @get
-    getTODO2_0_users(): UserRemoteEntity[];
+    getUsers(): UserRemoteEntity[];
 
     @route("3.0/user-profile/{userId}")
     @get
-    getTODO3_0_user_profile__userId_(
-        @path userId: string,
-    ): UserProfileRemoteEntity;
+    getUserProfile(@path userId: string): UserProfileRemoteEntity;
 
     @route("2.0/my/user")
     @get
-    getTODO2_0_my_user(): UserRemoteEntity;
+    getCurrentUser(): UserRemoteEntity;
 
     @route("3.0/users/blocked-users")
     @get
-    getTODO3_0_users_blocked_users(): UserBlockedRemoteEntity[];
+    getBlockedUsers(): UserBlockedRemoteEntity[];
 
     @route("3.0/user-classifications")
     @post
-    postTODO3_0_user_classifications(
+    setUserClassifications(
         @body list: UserClassificationAnswerRemoteEntity[],
     ): void;
 
     @route("2.0/my/statistics")
     @get
-    getTODO2_0_my_statistics(): UserStatsRemoteEntity;
+    getCurrentUserStatistics(): UserStatsRemoteEntity;
 
     @route("2.0/my/image")
     @post
-    postTODO2_0_my_image(
+    uploadCurrentUserImage(
         @header `content-type`: "multipart/form-data",
         @multipartBody body: {
             part: HttpPart<unknown>;

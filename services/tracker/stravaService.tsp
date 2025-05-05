@@ -19,7 +19,7 @@ model StravaAuthRemoteEntity {
 interface StravaService {
     @route("/api/v3/oauth/token{?client_id,client_secret,code,grant_type}")
     @post
-    postTODO_api_v3_oauth_token(
+    getStravaToken(
         @query client_id: string,
         @query client_secret: string,
         @query code: string,

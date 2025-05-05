@@ -157,7 +157,7 @@ model SocialWallPostsRemoteEntity {
 interface SocialWallService {
     @route("3.0/social/posts/{post_id}")
     @post
-    postSocialPostById(
+    createSocialPostById(
         @path post_id: string,
         @body body: SocialPostMessageBodyRemoteEntity,
     ): IdRemoteEntity;
@@ -165,7 +165,7 @@ interface SocialWallService {
     @sharedRoute
     @route("3.0/social/posts")
     @post
-    postTODO3_0_social_posts(
+    createSocialPostWithMedia(
         @header `content-type`: "multipart/form-data",
         @multipartBody body: {
             part: HttpPart<unknown>;
@@ -175,43 +175,35 @@ interface SocialWallService {
 
     @route("2.0/social/posts/{post_id}/report")
     @post
-    postTODO2_0_social_posts__post_id__report(
+    reportSocialPost(
         @path post_id: string,
         @body idRemoteEntity: IdRemoteEntity,
     ): void;
 
     @route("2.0/social/posts/{post_id}/liked-by")
     @get
-    getTODO2_0_social_posts__post_id__liked_by(
-        @path post_id: string,
-    ): SocialPostUserLikeRemoteEntity[];
+    getSocialPostLikes(@path post_id: string): SocialPostUserLikeRemoteEntity[];
 
     @route("2.0/socialtags")
     @get
-    getTODO2_0_socialtags(): SocialTagRemoteEntity[];
+    getSocialTags(): SocialTagRemoteEntity[];
 
     @route("3.0/social/posts/{post_id}/like")
     @delete
-    deleteTODO3_0_social_posts__post_id__like(
-        @path post_id: string,
-    ): SocialWallPostRemoteEntity;
+    unlikeSocialPost(@path post_id: string): SocialWallPostRemoteEntity;
 
     @route("3.0/social/posts/{post_id}/like")
     @put
-    putTODO3_0_social_posts__post_id__like(
-        @path post_id: string,
-    ): SocialWallPostRemoteEntity;
+    likeSocialPost(@path post_id: string): SocialWallPostRemoteEntity;
 
     @route("3.0/social/posts/{post_id}")
     @get
-    getTODO3_0_social_posts__post_id_(
-        @path post_id: string,
-    ): SocialWallPostRemoteEntity;
+    getSocialPost(@path post_id: string): SocialWallPostRemoteEntity;
 
     @sharedRoute
     @route("3.0/social/posts")
     @post
-    postTODO3_0_social_posts_2params(
+    createSocialPostWith2Params(
         @header `content-type`: "multipart/form-data",
         @multipartBody body: {
             part: HttpPart<unknown>;
@@ -221,12 +213,12 @@ interface SocialWallService {
 
     @route("2.0/social/posts/report-reasons")
     @get
-    getTODO2_0_social_posts_report_reasons(): ReportReasonRemoteEntity[];
+    getReportReasons(): ReportReasonRemoteEntity[];
 
     @sharedRoute
     @route("3.0/social/posts")
     @post
-    postTODO3_0_social_posts_3Params(
+    createSocialPostWith3Params(
         @header `content-type`: "multipart/form-data",
         @multipartBody body: {
             part: HttpPart<unknown>;
@@ -237,68 +229,63 @@ interface SocialWallService {
 
     @route("3.0/social/posts/{post_id}")
     @delete
-    deleteTODO3_0_social_posts__post_id_(@path post_id: string): void;
+    deleteSocialPost(@path post_id: string): void;
 
     @sharedRoute
     @route("3.0/social/posts")
     @post
-    postTODO3_0_social_posts_messagebody(
+    createSocialPostWithMessage(
         @body
         socialPostMessageBodyRemoteEntity: SocialPostMessageBodyRemoteEntity,
     ): void;
 
     @route("3.0/social/posts/{post_id}/comments/{comment_id}")
     @delete
-    deleteTODO3_0_social_posts__post_id__comments__comment_id_(
+    deleteSocialPostComment(
         @path post_id: string,
         @path comment_id: string,
     ): SocialWallPostRemoteEntity;
 
     @route("2.0/blogs/posts/{post_id}")
     @get
-    getTODO2_0_blogs_posts__post_id_(
-        @path post_id: string,
-    ): BlogPostRemoteEntity;
+    getBlogPost(@path post_id: string): BlogPostRemoteEntity;
 
     @route("3.0/social/posts/{post_id}/comments/{comment_id}/like")
     @delete
-    deleteTODO3_0_social_posts__post_id__comments__comment_id__like(
+    deleteSocialPostCommentLike(
         @path post_id: string,
         @path comment_id: string,
     ): SocialWallPostRemoteEntity;
 
     @route("2.0/socialTags/list")
     @get
-    getTODO2_0_socialTags_list(): SocialTagListRemoteEntity;
+    getSocialTagList(): SocialTagListRemoteEntity;
 
     @route("3.0/social/posts/{post_id}/moderate/{actionId}")
     @post
-    postTODO3_0_social_posts__post_id__moderate__actionId_(
-        @path post_id: string,
-        @path actionId: string,
-    ): void;
+    moderateSocialPost(@path post_id: string, @path actionId: string): void;
 
     @route("2.0/my/socialtags/available")
     @get
-    getTODO2_0_my_socialtags_available(): SocialTagRemoteEntity[];
+    getMyAvailableSocialTags(): SocialTagRemoteEntity[];
 
     @route("3.0/social/posts/{post_id}")
     @patch
-    patchTODO3_0_social_posts__post_id_(
+    updateSocialPost(
         @path post_id: string,
         @body socialPostEditBodyRemoteEntity: SocialPostEditBodyRemoteEntity,
     ): void;
 
     @route("4.0/social/posts{?date,filters}")
     @get
-    getTODO4_0_social_posts(
+    getSocialPosts(
         @query date: string,
         @query filters: string,
     ): SocialWallPostsRemoteEntity;
 
     @route("3.0/social/posts/{post_id}/comments/{comment_id}/like")
     @put
-    put3_0_social_posts__post_id__comments__comment_id__like(
+    likeSocialPostComment(
         @path post_id: string,
         @path comment_id: string,
     ): SocialWallPostRemoteEntity;
@@ -306,7 +293,7 @@ interface SocialWallService {
     @sharedRoute
     @route("3.0/social/posts")
     @post
-    postTODO3_0_social_posts_onepart(
+    createSocialPostWithOnePart(
         @header `content-type`: "multipart/form-data",
         @multipartBody body: {
             part: HttpPart<unknown>;
@@ -316,10 +303,10 @@ interface SocialWallService {
     @sharedRoute
     @route("3.0/blogs/posts{?sincePostId}")
     @get
-    getTODO3_0_blogs_posts(@query sincePostId: string): BlogPostRemoteEntity[];
+    getBlogPosts(@query sincePostId: string): BlogPostRemoteEntity[];
 
     @sharedRoute
     @route("3.0/blogs/posts")
     @get
-    getTODO3_0_blogs_posts_noparams(): BlogPostRemoteEntity[];
+    getBlogPostsNoParams(): BlogPostRemoteEntity[];
 }

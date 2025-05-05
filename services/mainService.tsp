@@ -38,21 +38,21 @@ interface MainService {
     @sharedRoute
     @route("3.0/bottom-nav{?socialWallSinceDate,chatSinceDate}")
     @get
-    getTODO3_0_bottom_nav(
+    getBottomNav(
         @query socialWallSinceDate: string,
         @query chatSinceDate: string,
     ): BottomBarRemoteEntity;
 
     @route("2.0/rating/store/accept")
     @post
-    postTODO2_0_rating_store_accept(): void;
+    acceptStoreRating(): void;
 
     @route("2.0/rating/store/decline")
     @post
-    postTODO2_0_rating_store_decline(): void;
+    declineStoreRating(): void;
 
     @sharedRoute
     @route("3.0/bottom-nav")
     @get
-    getTODO3_0_bottom_nav_noparams(): BottomBarRemoteEntity;
+    getBottomNavNoParams(): BottomBarRemoteEntity;
 }

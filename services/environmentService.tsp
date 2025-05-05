@@ -116,22 +116,22 @@ model LanguageRemoteEntity {
 interface EnvironmentService {
     @route("2.0/landing/spaces/validate")
     @post
-    postTODO2_0_landing_spaces_validate(
+    validateSpaceCode(
         @body spaceCodeBodyRemoteEntity: SpaceCodeBodyRemoteEntity,
     ): IdRemoteEntity;
 
     @route("3.0/settings{?id}")
     @get
-    getTODO3_0_settings(
+    getSettings(
         @header("Cache-Control") cacheControl: string,
         @query id?: string,
     ): SettingsRemoteEntity;
 
     @route("2.0/entities/{spaceId}")
     @get
-    getTODO2_0_entities__spaceId_(@path spaceId: string): GroupRemoteEntity[];
+    getSpaceGroups(@path spaceId: string): GroupRemoteEntity[];
 
     @route("2.0/languages")
     @get
-    getTODO2_0_languages(): LanguageRemoteEntity[];
+    getLanguages(): LanguageRemoteEntity[];
 }

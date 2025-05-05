@@ -71,14 +71,11 @@ model RankingRemoteEntity {
 interface RankingService {
     @route("3.0/ranking/{type}/{seasonId}")
     @get
-    getTODO3_0_ranking__type___seasonId_(
-        @path type: string,
-        @path seasonId: string,
-    ): RankingRemoteEntity;
+    getRanking(@path type: string, @path seasonId: string): RankingRemoteEntity;
 
     @route("3.0/ranking/{type}/{seasonId}/elements{?direction,offsetId}")
     @get
-    getTODO3_0_ranking__type___seasonId__elements(
+    getRankingElements(
         @path type: string,
         @path seasonId: string,
         @query direction: string,
@@ -87,14 +84,14 @@ interface RankingService {
 
     @route("3.0/ranking/{type}/{seasonId}/elements/me")
     @get
-    getTODO3_0_ranking__type___seasonId__elements_me(
+    getMyRankingElement(
         @path type: string,
         @path seasonId: string,
-    ): RankingElementRemoteEntity[];
+    ): RankingElementRemoteEntity;
 
     @route("3.0/ranking/{type}/{seasonId}/elements/search{?name,limit,offsetId}")
     @get
-    getTODO3_0_ranking__type___seasonId__elements_search(
+    searchRankingElements(
         @path type: string,
         @path seasonId: string,
         @query name: string,

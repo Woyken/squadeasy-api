@@ -99,58 +99,50 @@ model ActivityGroupMobilityReasonsBodyRemoteEntity {
 interface SportService {
     @route("2.0/my/activities/{id}/manual")
     @post
-    postTODO2_0_my_activities__id__manual(
-        @path id: string,
-        @body list: StepsRemoteEntity[],
-    ): void;
+    addManualSteps(@path id: string, @body list: StepsRemoteEntity[]): void;
 
     @route("3.0/user-activity-groups/{userActivityGroupId}/segments")
     @post
-    postTODO3_0_user_activity_groups__userActivityGroupId__segments(
+    addSportSegments(
         @path userActivityGroupId: string,
         @body list: SportSegmentRemoteEntity,
     ): void;
 
     @route("3.0/user-activity-groups/{userActivityGroupId}/ping")
     @post
-    postTODO3_0_user_activity_groups__userActivityGroupId__ping(
-        @path userActivityGroupId: string,
-    ): void;
+    pingUserActivityGroup(@path userActivityGroupId: string): void;
 
     @route("2.0/my/activities/{id}")
     @post
-    postTODO2_0_my_activities__id_(
+    addSportGpsData(
         @path id: string,
         @body sportGpsRemoteEntity: SportGpsRemoteEntity,
     ): IdRemoteEntity;
 
     @route("3.0/user-activity-groups/start")
     @post
-    postTODO3_0_user_activity_groups_start(): SportSessionRemoteEntity;
+    startSportSession(): SportSessionRemoteEntity;
 
     @route("4.0/steps/updated-at")
     @get
-    getTODO4_0_steps_updated_at(): StepsInfoRemoteEntity;
+    getStepsUpdatedAt(): StepsInfoRemoteEntity;
 
     @route("3.0/activity-groups/gps")
     @get
-    getTODO3_0_activity_groups_gps(): ActivityGroupRemoteEntity[];
+    getGpsActivityGroups(): ActivityGroupRemoteEntity[];
 
     @route("3.0/activity-groups/mobility-reasons")
     @get
-    getTODO3_0_activity_groups_mobility_reasons(
-    ): ActivityGroupMobilityReasonsRemoteEntity[];
+    getMobilityReasons(): ActivityGroupMobilityReasonsRemoteEntity[];
 
     @route("3.0/user-activity-groups/{userActivityGroupId}/end")
     @post
-    postTODO3_0_user_activity_groups__userActivityGroupId__end(
-        @path userActivityGroupId: string,
-    ): void;
+    endUserActivityGroup(@path userActivityGroupId: string): void;
 
     @sharedRoute
     @route("3.0/user-activity-groups/{userActivityGroupId}")
     @patch
-    patchTODO3_0_user_activity_groups__userActivityGroupId_(
+    updateUserActivityGroupMobilityReason(
         @path userActivityGroupId: string,
 
         @body
@@ -159,8 +151,5 @@ interface SportService {
 
     @route("2.0/my/activities/walk")
     @post
-    postTODO2_0_my_activities__id_walk(
-        @path id: string,
-        @body list: StepsRemoteEntity[],
-    ): void;
+    addWalkActivity(@path id: string, @body list: StepsRemoteEntity[]): void;
 }

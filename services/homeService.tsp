@@ -154,46 +154,43 @@ model SurveyRemoteEntity {
 interface HomeService {
     @route("4.0/histories/activity-gps/last-activity-command{?sinceDate}")
     @get
-    getTODO4_0_histories_activity_gps_last_activity_command(
+    getLastActivityCommand(
         @query sinceDate: string,
     ): HomeUserActivityGroupStatusRemoteEntity;
 
     @route("3.0/missions/activities/over")
     @get
-    getTODO3_0_missions_activities_over(): MissionRemoteEntity[];
+    getOverMissions(): MissionRemoteEntity[];
 
     @route("3.0/missions/activities/upcoming")
     @get
-    getTODO3_0_missions_activities_upcoming(): MissionRemoteEntity[];
+    getUpcomingMissions(): MissionRemoteEntity[];
 
     @route("3.0/boosts/received")
     @get
-    getTODO3_0_boosts_received(): HomeBoostRemoteEntity;
+    getReceivedBoosts(): HomeBoostRemoteEntity;
 
     @route("3.0/badges{?social}")
     @get
-    getTODO3_0_badges(@query social: string): BadgesRemoteEntity;
+    getBadges(@query social: string): BadgesRemoteEntity;
 
     @route("4.0/home")
     @get
-    getTODO4_0_home(): HomeResponseRemoteEntity;
+    getHome(): HomeResponseRemoteEntity;
 
     @route("3.0/my/home")
     @get
-    getTODO3_0_my_home(): HomeRemoteEntity;
+    getMyHome(): HomeRemoteEntity;
 
     @route("3.0/missions/activities/ongoing")
     @get
-    getTODO3_0_missions_activities_ongoing(): MissionRemoteEntity[];
+    getOngoingMissions(): MissionRemoteEntity[];
 
     @route("3.0/survey/{id}/answer")
     @post
-    postTODO3_0_survey__id__answer(
-        @path id: string,
-        @body idRemoteEntity: IdRemoteEntity,
-    ): void;
+    answerSurvey(@path id: string, @body idRemoteEntity: IdRemoteEntity): void;
 
     @route("3.0/survey/{id}")
     @get
-    getTODO3_0_survey__id_(@path id: string): SurveyRemoteEntity;
+    getSurvey(@path id: string): SurveyRemoteEntity;
 }

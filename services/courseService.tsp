@@ -37,17 +37,17 @@ model SubmitCourseBodyRemoteEntity {
 interface CourseService {
     @route("2.0/courses/search")
     @post
-    postTODO2_0_courses_search(
+    searchCourses(
         @body searchCourseBodyRemoteEntity: SearchCourseBodyRemoteEntity,
     ): CourseRemoteEntity[];
 
     @route("2.0/my/courses")
     @post
-    postTODO2_0_my_courses(
+    submitMyCourse(
         @body submitCourseBodyRemoteEntity: SubmitCourseBodyRemoteEntity,
     ): void;
 
     @route("2.0/courses/sources")
     @get
-    getTODO2_0_courses_sources(): string[];
+    getCourseSources(): string[];
 }

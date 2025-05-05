@@ -108,7 +108,7 @@ model CreateTeamRemote {
 interface TeamService {
     @route("2.0/my/team/image")
     @post
-    postTODO2_0_my_team_image(
+    uploadMyTeamImage(
         @header `content-type`: "multipart/form-data",
         @multipartBody body: {
             part: HttpPart<unknown>;
@@ -117,60 +117,55 @@ interface TeamService {
 
     @route("2.0/teams/{id}")
     @get
-    getTODO2_0_teams__id_(@path id: string): TeamRemoteEntity;
+    getTeam(@path id: string): TeamRemoteEntity;
 
     @route("2.0/teams/search")
     @post
-    postTODO2_0_teams_search(
+    searchTeams(
         @body teamSearchBodyRemoteEntity: TeamSearchBodyRemoteEntity,
     ): TeamSearchRemoteEntity[];
 
     @route("2.0/my/team/statistics")
     @get
-    getTODO2_0_my_team_statistics(): TeamActivityStatsRemoteEntity[];
+    getMyTeamStatistics(): TeamActivityStatsRemoteEntity[];
 
     @route("2.0/my/team/kick")
     @post
-    postTODO2_0_my_team_kick(@body idRemoteEntity: IdRemoteEntity): void;
+    kickTeamMember(@body idRemoteEntity: IdRemoteEntity): void;
 
     @route("3.0/team-detail/{id}")
     @get
-    getTODO3_0_team_detail__id_(@path id: string): TeamDetailsRemoteEntity;
+    getTeamDetails(@path id: string): TeamDetailsRemoteEntity;
 
     @route("2.0/teams")
     @get
-    getTODO2_0_teams(): TeamSearchRemoteEntity[];
+    getTeams(): TeamSearchRemoteEntity[];
 
     @route("3.0/teams/management")
     @get
-    getTODO3_0_teams_management(): TeamManagementRemoteEntity;
+    getTeamManagement(): TeamManagementRemoteEntity;
 
     @route("2.0/my/team/captain")
     @patch
-    patchTODO2_0_my_team_captain(@body idRemoteEntity: IdRemoteEntity): void;
+    updateTeamCaptain(@body idRemoteEntity: IdRemoteEntity): void;
 
     @route("2.0/teams/{id}/join")
     @post
-    postTODO2_0_teams__id__join(
-        @path id: string,
-        @body joinTeamRemote: JoinTeamRemote,
-    ): void;
+    joinTeam(@path id: string, @body joinTeamRemote: JoinTeamRemote): void;
 
     @route("2.0/my/team")
     @patch
-    patchTODO2_0_my_team(
-        @body editTeamRemoteEntity: EditTeamRemoteEntity,
-    ): void;
+    updateMyTeam(@body editTeamRemoteEntity: EditTeamRemoteEntity): void;
 
     @route("2.0/teams")
     @post
-    postTODO2_0_teams(@body createTeamRemote: CreateTeamRemote): void;
+    createTeam(@body createTeamRemote: CreateTeamRemote): void;
 
     @route("2.0/my/team")
     @get
-    getTODO2_0_my_team(): TeamRemoteEntity;
+    getMyTeam(): TeamRemoteEntity;
 
     @route("2.0/my/team/leave")
     @post
-    postTODO2_0_my_team_leave(): void;
+    leaveMyTeam(): void;
 }

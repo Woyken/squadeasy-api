@@ -43,5 +43,5 @@ model CO2DetailsRemoteEntity {
 interface CO2Service {
     @route("4.0/co2/summary")
     @get
-    getTODO4_0_co2_summary(): CO2DetailsRemoteEntity;
+    getCo2Summary(): CO2DetailsRemoteEntity;
 }

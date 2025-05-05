@@ -37,7 +37,7 @@ model WeatherForecastRemoteEntity {
 interface WeatherService {
     @route("4.0/weather{?lat,long}")
     @get
-    getTODO4_0_weather(
+    getWeatherForecast(
         @query lat: float64,
         @query long: float64,
     ): WeatherForecastRemoteEntity;

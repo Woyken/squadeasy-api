@@ -125,25 +125,25 @@ model ChallengeOverRemoteEntity {
 interface ChallengeService {
     @route("2.0/my/challenge/marquee")
     @get
-    getTODO2_0_my_challenge_marquee(): ChallengeMarqueeRemoteEntity;
+    getMyChallengeMarquee(): ChallengeMarqueeRemoteEntity;
 
     @route("3.0/global-missions/over")
     @get
-    getTODO3_0_global_missions_over(): MissionSolidaryRemoteEntity[];
+    getOverGlobalMissions(): MissionSolidaryRemoteEntity[];
 
     @route("3.0/my/challenge")
     @get
-    getTODO3_0_my_challenge(): ChallengeRemoteEntity;
+    getMyChallenge(): ChallengeRemoteEntity;
 
     @route("3.0/global-missions/active")
     @get
-    getTODO3_0_global_missions_active(): MissionSolidaryRemoteEntity[];
+    getActiveGlobalMissions(): MissionSolidaryRemoteEntity[];
 
     @route("2.0/my/challenge")
     @get
-    getTODO2_0_my_challenge(): LegacyChallengeRemoteEntity;
+    getLegacyMyChallenge(): LegacyChallengeRemoteEntity;
 
     @route("2.0/my/challenge/over")
     @get
-    getTODO2_0_my_challenge_over(): ChallengeOverRemoteEntity;
+    getLegacyMyChallengeOver(): ChallengeOverRemoteEntity;
 }

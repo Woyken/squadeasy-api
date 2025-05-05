@@ -15,14 +15,14 @@ model NotificationTokenBodyRemoteEntity {
 interface NotificationService {
     @route("/notifications/1.0/tokens-delete")
     @post
-    postTODO_notifications_1_0_tokens_delete(
+    deleteNotificationToken(
         @body
         notificationTokenBodyRemoteEntity: NotificationTokenBodyRemoteEntity,
     ): void;
 
     @route("/notifications/1.0/tokens-create")
     @post
-    postTODO_notifications_1_0_tokens_create(
+    createNotificationToken(
         @body
         notificationTokenBodyRemoteEntity: NotificationTokenBodyRemoteEntity,
     ): void;

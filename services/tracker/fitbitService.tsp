@@ -15,7 +15,7 @@ model FitbitAuthRemoteEntity {
 interface FitbitService {
     @route("oauth2/token{?client_id,grant_type,redirect_uri,code}")
     @post
-    postTODOoauth2_token(
+    getFitbitToken(
         @header(#{ name: "Authorization" }) authorization: string,
         @header(#{ name: "Content-Type" }) contentType: string,
         @query client_id: string,

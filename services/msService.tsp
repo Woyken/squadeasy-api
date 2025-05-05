@@ -82,19 +82,16 @@ model UserNotificationRemoteEntity {
 interface MSService {
     @route("tracker/1.0/chunks")
     @post
-    postTODOtracker_1_0_chunks(
-        @body chunkRemoteEntity: ChunkRemoteEntity,
-    ): string[];
+    createTrackerChunk(@body chunkRemoteEntity: ChunkRemoteEntity): string[];
 
     @route("/notifications/1.0/user-preferences")
     @patch
-    patchTODO_notifications_1_0_user_preferences(
+    updateUserNotificationPreferences(
         @body
         userNotificationBodyRemoteEntity: UserNotificationBodyRemoteEntity,
     ): UserNotificationRemoteEntity[];
 
     @route("/notifications/1.0/user-preferences")
     @get
-    getTODO_notifications_1_0_user_preferences(
-    ): UserNotificationRemoteEntity[];
+    getUserNotificationPreferences(): UserNotificationRemoteEntity[];
 }

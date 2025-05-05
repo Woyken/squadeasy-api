@@ -36,15 +36,15 @@ model FitbitLoginBodyRemoteEntity {
 interface StravaService {
     @route("2.0/my/integrations/{id}")
     @delete
-    deleteTODO2_0_my_integrations__id_(@path id: string): void;
+    deleteIntegration(@path id: string): void;
 
     @route("2.0/my/integrations")
     @get
-    getTODO2_0_my_integrations(): TrackerRemoteEntity[];
+    getIntegrations(): TrackerRemoteEntity[];
 
     @route("2.0/my/integrations/garmin")
     @post
-    postTODO2_0_my_integrations_garmin(
+    connectGarmin(
         @path id: string,
 
         @body
@@ -53,14 +53,14 @@ interface StravaService {
 
     @route("2.0/my/integrations/{id}")
     @post
-    postTODO2_0_my_integrations__id_(
+    connectIntegration(
         @path id: string,
         @body trackerLoginBodyRemoteEntity: TrackerLoginBodyRemoteEntity,
     ): void;
 
     @route("2.0/my/integrations/fitbit")
     @post
-    postTODO2_0_my_integrations_fitbit(
+    connectFitbit(
         @body fitbitLoginBodyRemoteEntity: FitbitLoginBodyRemoteEntity,
     ): void;
 }

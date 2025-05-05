@@ -14,5 +14,5 @@ model AnalyticsRemoteEntity {
 interface AnalyticsService {
     @route("2.0/event")
     @post
-    postTODO2_0_event(@body analyticsRemoteEntity: AnalyticsRemoteEntity): void;
+    postEvent(@body analyticsRemoteEntity: AnalyticsRemoteEntity): void;
 }

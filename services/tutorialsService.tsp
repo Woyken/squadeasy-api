@@ -16,5 +16,5 @@ model TutorialRemoteEntity {
 interface TutorialsService {
     @route("3.0/tutorials/{helpId}")
     @get
-    getTODO3_0_tutorials__helpId_(@path helpId: string): TutorialRemoteEntity[];
+    getTutorials(@path helpId: string): TutorialRemoteEntity[];
 }

@@ -309,41 +309,41 @@ model ActivityQuizPostAnswerRemoteEntity {
 interface ActivityService {
     @route("3.0/quizzes/un-answered")
     @get
-    getTODO3_0_quizzes_un_answered(): QuizSummaryRemoteEntity[];
+    getUnansweredQuizzes(): QuizSummaryRemoteEntity[];
 
     @route("2.0/my/activities/mission")
     @get
-    getTODO2_0_my_activities__activityID_mission(
+    getActivityMissions(
         @path activityID: string,
     ): ActivityMissionHistoryRemoteEntity[];
 
     @route("3.0/user-activity-groups/{userActivityGroupId}/segments")
     @get
-    getTODO3_0_user_activity_groups__userActivityGroupId__segments(
+    getUserActivityGroupSegments(
         @path userActivityGroupId: string,
     ): SportSessionSummarySegmentRemoteEntity[];
 
     @route("3.0/my/activities/{activityID}/{id}")
     @get
-    getTODO3_0_my_activities__activityID___id_(
+    getActivityGpsDetails(
         @path activityID: string,
         @path id: string,
     ): ActivityGpsDetailsRemoteEntity;
 
     @route("2.0/my/quiz")
     @get
-    getTODO2_0_my_quiz(): ActivityHomeQuizRemoteEntity[];
+    getMyQuizzes(): ActivityHomeQuizRemoteEntity[];
 
     @route("4.0/histories/gps{?filter-by,since-date}")
     @get
-    getTODO4_0_histories_gps(
+    getGpsHistories(
         @query("filter-by") filterBy: string,
         @query("since-date") sinceDate: string,
     ): ActivitiesHistoryRemoteEntity;
 
     @route("3.0/my/activities/{activityID}/{id}")
     @patch
-    patchTODO3_0_my_activities__activityID___id_(
+    updateActivityGpsDetails(
         @path activityID: string,
         @path id: string,
         @body activityGpsBodyRemoteEntity: ActivityGpsBodyRemoteEntity,
@@ -351,43 +351,41 @@ interface ActivityService {
 
     @route("2.0/my/activities/{activityID}")
     @get
-    getTODO2_0_my_activities__activityID_gpshistory(
+    getActivityGpsHistory(
         @path activityID: string,
     ): ActivityGpsHistoryRemoteEntity[];
 
     @route("3.0/activities")
     @get
-    getTODO3_0_activities(): ActivitiesRemoteEntity;
+    getActivities(): ActivitiesRemoteEntity;
 
     @route("2.0/my/activities")
     @get
-    getTODO2_0_my_activities(): LegacyActivityRemoteEntity[];
+    getMyActivities(): LegacyActivityRemoteEntity[];
 
     @sharedRoute
     @route("3.0/user-activity-groups/{userActivityGroupId}")
     @patch
-    patchTODO3_0_user_activity_groups__userActivityGroupId_(
+    updateUserActivityGroup(
         @path userActivityGroupId: string,
         @body sportSessionBodyRemoteEntity: SportSessionBodyRemoteEntity,
     ): void;
 
     @route("3.0/user-activity-groups")
     @get
-    getTODO3_0_user_activity_groups(): SportSessionHistoryRemoteEntity[];
+    getUserActivityGroups(): SportSessionHistoryRemoteEntity[];
 
     @route("4.0/histories/activity-gps/{id}")
     @get
-    getTODO4_0_histories_activity_gps__id_(
-        @path id: string,
-    ): SportSessionSummaryRemoteEntity;
+    getActivityGpsSummary(@path id: string): SportSessionSummaryRemoteEntity;
 
     @route("3.0/quizzes/answered")
     @get
-    getTODO3_0_quizzes_answered(): QuizSummaryRemoteEntity[];
+    getAnsweredQuizzes(): QuizSummaryRemoteEntity[];
 
     @route("4.0/histories/{type}/{seasonId}{?date,page}")
     @get
-    getTODO4_0_histories__type___seasonId_(
+    getHistories(
         @path type: string,
         @path seasonId: string,
         @query date?: string,
@@ -397,20 +395,20 @@ interface ActivityService {
 
     @route("2.0/my/activities/quiz")
     @get
-    getTODO2_0_my_activities__activityID_quiz(
+    getActivityQuizHistory(
         @path activityID: string,
     ): ActivityQuizHistoryRemoteEntity[];
 
     @route("2.0/my/activities/{activityID}/{id}")
     @get
-    getTODO2_0_my_activities__activityID___id_(
+    getActivityQuiz(
         @path activityID: string,
         @path id: string,
     ): ActivityQuizRemoteEntity;
 
     @route("2.0/my/activities/{activityID}/{id}")
     @post
-    postTODO2_0_my_activities__activityID___id_(
+    postActivityQuizAnswer(
         @path activityID: string,
         @path id: string,
 
