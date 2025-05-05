@@ -1,0 +1,21 @@
+public interface MainService {
+    @GET("3.0/bottom-nav")
+    @Nullable
+    /* renamed from: a */
+    Object m12733a(@NotNull @Query("socialWallSinceDate") String str, @NotNull @Query("chatSinceDate") String str2, @NotNull Continuation<? super Response<BottomBarRemoteEntity>> continuation);
+
+    @POST("2.0/rating/store/accept")
+    @Nullable
+    /* renamed from: b */
+    Object m12734b(@NotNull Continuation<? super Response<Void>> continuation);
+
+    @POST("2.0/rating/store/decline")
+    @Nullable
+    /* renamed from: c */
+    Object m12735c(@NotNull Continuation<? super Response<Void>> continuation);
+
+    @GET("3.0/bottom-nav")
+    @Nullable
+    /* renamed from: d */
+    Object m12736d(@NotNull Continuation<? super Response<BottomBarRemoteEntity>> continuation);
+}

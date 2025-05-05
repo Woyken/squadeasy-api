@@ -1,0 +1,6 @@
+public interface StravaService {
+    @POST("/api/v3/oauth/token")
+    @Nullable
+    /* renamed from: a */
+    Object m12838a(@NotNull @Query("client_id") String str, @NotNull @Query("client_secret") String str2, @NotNull @Query("code") String str3, @NotNull @Query("grant_type") String str4, @NotNull Continuation<? super Response<StravaAuthRemoteEntity>> continuation);
+}

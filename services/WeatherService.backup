@@ -1,0 +1,6 @@
+public interface WeatherService {
+    @GET("4.0/weather")
+    @Nullable
+    /* renamed from: a */
+    Object m12836a(@Query("lat") double d2, @Query("long") double d3, @NotNull Continuation<? super Response<WeatherForecastRemoteEntity>> continuation);
+}

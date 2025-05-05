@@ -1,0 +1,51 @@
+public interface HomeService {
+    @GET("4.0/histories/activity-gps/last-activity-command")
+    @Nullable
+    /* renamed from: a */
+    Object m12720a(@NotNull @Query("sinceDate") String str, @NotNull Continuation<? super Response<HomeUserActivityGroupStatusRemoteEntity>> continuation);
+
+    @GET("3.0/missions/activities/over")
+    @Nullable
+    /* renamed from: b */
+    Object m12721b(@NotNull Continuation<? super Response<List<MissionRemoteEntity>>> continuation);
+
+    @GET("3.0/missions/activities/upcoming")
+    @Nullable
+    /* renamed from: c */
+    Object m12722c(@NotNull Continuation<? super Response<List<MissionRemoteEntity>>> continuation);
+
+    @GET("3.0/boosts/received")
+    @Nullable
+    /* renamed from: d */
+    Object m12723d(@NotNull Continuation<? super Response<HomeBoostRemoteEntity>> continuation);
+
+    @GET("3.0/badges")
+    @Nullable
+    /* renamed from: e */
+    Object m12724e(@NotNull @Query("social") String str, @NotNull Continuation<? super Response<BadgesRemoteEntity>> continuation);
+
+    @GET("4.0/home")
+    @Nullable
+    /* renamed from: f */
+    Object m12725f(@NotNull Continuation<? super Response<HomeResponseRemoteEntity>> continuation);
+
+    @GET("3.0/my/home")
+    @Nullable
+    /* renamed from: g */
+    Object m12726g(@NotNull Continuation<? super Response<HomeRemoteEntity>> continuation);
+
+    @GET("3.0/missions/activities/ongoing")
+    @Nullable
+    /* renamed from: h */
+    Object m12727h(@NotNull Continuation<? super Response<List<MissionRemoteEntity>>> continuation);
+
+    @POST("3.0/survey/{id}/answer")
+    @Nullable
+    /* renamed from: i */
+    Object m12728i(@Path("id") @NotNull String str, @Body @NotNull IdRemoteEntity idRemoteEntity, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @GET("3.0/survey/{id}")
+    @Nullable
+    /* renamed from: j */
+    Object m12729j(@Path("id") @NotNull String str, @NotNull Continuation<? super Response<SurveyRemoteEntity>> continuation);
+}

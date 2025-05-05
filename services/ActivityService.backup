@@ -1,0 +1,91 @@
+public interface ActivityService {
+    @GET("3.0/quizzes/un-answered")
+    @Nullable
+    /* renamed from: a */
+    Object m12665a(@NotNull Continuation<? super Response<List<QuizSummaryRemoteEntity>>> continuation);
+
+    @GET("2.0/my/activities/{activityID}")
+    @Nullable
+    /* renamed from: b */
+    Object m12666b(@Path("activityID") @NotNull String str, @NotNull Continuation<? super Response<List<ActivityMissionHistoryRemoteEntity>>> continuation);
+
+    @GET("3.0/user-activity-groups/{userActivityGroupId}/segments")
+    @Nullable
+    /* renamed from: c */
+    Object m12667c(@Path("userActivityGroupId") @NotNull String str, @NotNull Continuation<? super Response<List<SportSessionSummarySegmentRemoteEntity>>> continuation);
+
+    @GET("3.0/my/activities/{activityID}/{id}")
+    @Nullable
+    /* renamed from: d */
+    Object m12668d(@Path("activityID") @NotNull String str, @Path("id") @NotNull String str2, @NotNull Continuation<? super Response<ActivityGpsDetailsRemoteEntity>> continuation);
+
+    @GET("2.0/my/quiz")
+    @Nullable
+    /* renamed from: e */
+    Object m12669e(@NotNull Continuation<? super Response<List<ActivityHomeQuizRemoteEntity>>> continuation);
+
+    @GET("4.0/histories/gps")
+    @Nullable
+    /* renamed from: f */
+    Object m12670f(@NotNull @Query("filter-by") String str, @NotNull @Query("since-date") String str2, @NotNull Continuation<? super Response<ActivitiesHistoryRemoteEntity>> continuation);
+
+    @PATCH("3.0/my/activities/{activityID}/{id}")
+    @Nullable
+    /* renamed from: g */
+    Object m12671g(@Path("activityID") @NotNull String str, @Path("id") @NotNull String str2, @Body @NotNull ActivityGpsBodyRemoteEntity activityGpsBodyRemoteEntity, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @GET("2.0/my/activities/{activityID}")
+    @Nullable
+    /* renamed from: h */
+    Object m12672h(@Path("activityID") @NotNull String str, @NotNull Continuation<? super Response<List<ActivityGpsHistoryRemoteEntity>>> continuation);
+
+    @GET("3.0/activities")
+    @Nullable
+    /* renamed from: i */
+    Object m12673i(@NotNull Continuation<? super Response<ActivitiesRemoteEntity>> continuation);
+
+    @GET("2.0/my/activities")
+    @Nullable
+    /* renamed from: j */
+    Object m12674j(@NotNull Continuation<? super Response<List<LegacyActivityRemoteEntity>>> continuation);
+
+    @PATCH("3.0/user-activity-groups/{userActivityGroupId}")
+    @Nullable
+    /* renamed from: k */
+    Object m12675k(@Path("userActivityGroupId") @NotNull String str, @Body @NotNull SportSessionBodyRemoteEntity sportSessionBodyRemoteEntity, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @GET("3.0/user-activity-groups")
+    @Nullable
+    /* renamed from: l */
+    Object m12676l(@NotNull Continuation<? super Response<List<SportSessionHistoryRemoteEntity>>> continuation);
+
+    @GET("4.0/histories/activity-gps/{id}")
+    @Nullable
+    /* renamed from: m */
+    Object m12677m(@Path("id") @NotNull String str, @NotNull Continuation<? super Response<SportSessionSummaryRemoteEntity>> continuation);
+
+    @GET("3.0/quizzes/answered")
+    @Nullable
+    /* renamed from: n */
+    Object m12678n(@NotNull Continuation<? super Response<List<QuizSummaryRemoteEntity>>> continuation);
+
+    @GET("4.0/histories/{type}/{seasonId}")
+    @Nullable
+    /* renamed from: o */
+    Object m12679o(@Header("Cache-Control") @NotNull String str, @Path("type") @NotNull String str2, @Path("seasonId") @NotNull String str3, @Nullable @Query("date") String str4, @Nullable @Query("page") String str5, @NotNull Continuation<? super Response<ActivityHistoryRemoteEntity>> continuation);
+
+    @GET("2.0/my/activities/{activityID}")
+    @Nullable
+    /* renamed from: p */
+    Object m12680p(@Path("activityID") @NotNull String str, @NotNull Continuation<? super Response<List<ActivityQuizHistoryRemoteEntity>>> continuation);
+
+    @GET("2.0/my/activities/{activityID}/{id}")
+    @Nullable
+    /* renamed from: q */
+    Object m12681q(@Path("activityID") @NotNull String str, @Path("id") @NotNull String str2, @NotNull Continuation<? super Response<ActivityQuizRemoteEntity>> continuation);
+
+    @POST("2.0/my/activities/{activityID}/{id}")
+    @Nullable
+    /* renamed from: r */
+    Object m12682r(@Path("activityID") @NotNull String str, @Path("id") @NotNull String str2, @Body @NotNull ActivityQuizPostAnswerRemoteEntity activityQuizPostAnswerRemoteEntity, @NotNull Continuation<? super Response<ActivityQuizRemoteEntity>> continuation);
+}

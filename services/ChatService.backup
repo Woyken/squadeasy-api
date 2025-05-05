@@ -1,0 +1,41 @@
+public interface ChatService {
+    @GET("/chat/api/1.0/chat")
+    @Nullable
+    /* renamed from: a */
+    Object m12704a(@NotNull Continuation<? super Response<List<ChatConversationRemoteEntity>>> continuation);
+
+    @GET("/chat/api/1.0/chat/broadcast")
+    @Nullable
+    /* renamed from: b */
+    Object m12705b(@NotNull Continuation<? super Response<ChatConversationDetailsRemoteEntity>> continuation);
+
+    @GET("/chat/api/1.0/chat/direct/{id}")
+    @Nullable
+    /* renamed from: c */
+    Object m12706c(@Path("id") @NotNull String str, @NotNull Continuation<? super Response<ChatConversationDetailsRemoteEntity>> continuation);
+
+    @POST("/chat/api/1.0/chat/{chatType}/chat")
+    @Nullable
+    /* renamed from: d */
+    Object m12707d(@Path("chatType") @NotNull String str, @Body @NotNull ChatPostMessageRemoteEntity chatPostMessageRemoteEntity, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @GET("/chat/api/1.0/chat/{chatType}/messages")
+    @Nullable
+    /* renamed from: e */
+    Object m12708e(@Path("chatType") @NotNull String str, @NotNull @Query("sinceDate") String str2, @NotNull Continuation<? super Response<List<ChatMessageRemoteEntity>>> continuation);
+
+    @GET("/chat/api/1.0/chat/team")
+    @Nullable
+    /* renamed from: f */
+    Object m12709f(@NotNull Continuation<? super Response<ChatConversationDetailsRemoteEntity>> continuation);
+
+    @GET("/chat/api/1.0/chat/{chatType}/{id}/messages")
+    @Nullable
+    /* renamed from: g */
+    Object m12710g(@Path("chatType") @NotNull String str, @Path("id") @NotNull String str2, @NotNull @Query("sinceDate") String str3, @NotNull Continuation<? super Response<List<ChatMessageRemoteEntity>>> continuation);
+
+    @POST("/chat/api/1.0/chat/direct/{id}/chat")
+    @Nullable
+    /* renamed from: h */
+    Object m12711h(@Path("id") @NotNull String str, @Body @NotNull ChatPostMessageRemoteEntity chatPostMessageRemoteEntity, @NotNull Continuation<? super Response<Void>> continuation);
+}

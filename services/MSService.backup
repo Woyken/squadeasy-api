@@ -1,0 +1,16 @@
+public interface MSService {
+    @POST("tracker/1.0/chunks")
+    @Nullable
+    /* renamed from: a */
+    Object m12730a(@Body @NotNull List<ChunkRemoteEntity> list, @NotNull Continuation<? super Response<List<String>>> continuation);
+
+    @PATCH("/notifications/1.0/user-preferences")
+    @Nullable
+    /* renamed from: b */
+    Object m12731b(@Body @NotNull List<UserNotificationBodyRemoteEntity> list, @NotNull Continuation<? super Response<List<UserNotificationRemoteEntity>>> continuation);
+
+    @GET("/notifications/1.0/user-preferences")
+    @Nullable
+    /* renamed from: c */
+    Object m12732c(@NotNull Continuation<? super Response<List<UserNotificationRemoteEntity>>> continuation);
+}

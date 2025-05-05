@@ -1,0 +1,21 @@
+public interface EnvironmentService {
+    @POST("2.0/landing/spaces/validate")
+    @Nullable
+    /* renamed from: a */
+    Object m12715a(@Body @NotNull SpaceCodeBodyRemoteEntity spaceCodeBodyRemoteEntity, @NotNull Continuation<? super Response<IdRemoteEntity>> continuation);
+
+    @GET("3.0/settings")
+    @Nullable
+    /* renamed from: b */
+    Object m12716b(@Header("Cache-Control") @NotNull String str, @Nullable @Query("id") String str2, @NotNull Continuation<? super Response<SettingsRemoteEntity>> continuation);
+
+    @GET("2.0/entities/{spaceId}")
+    @Nullable
+    /* renamed from: c */
+    Object m12717c(@Path("spaceId") @NotNull String str, @NotNull Continuation<? super Response<List<GroupRemoteEntity>>> continuation);
+
+    @GET("2.0/languages")
+    @Nullable
+    /* renamed from: d */
+    Object m12718d(@NotNull Continuation<? super Response<List<LanguageRemoteEntity>>> continuation);
+}

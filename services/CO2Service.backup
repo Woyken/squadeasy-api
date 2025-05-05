@@ -1,0 +1,6 @@
+public interface CO2Service {
+    @GET("4.0/co2/summary")
+    @Nullable
+    /* renamed from: a */
+    Object m12697a(@NotNull Continuation<? super Response<CO2DetailsRemoteEntity>> continuation);
+}

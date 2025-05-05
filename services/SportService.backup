@@ -1,0 +1,56 @@
+public interface SportService {
+    @POST("2.0/my/activities/{id}/manual")
+    @Nullable
+    /* renamed from: a */
+    Object m12790a(@Path("id") @NotNull String str, @Body @NotNull List<StepsRemoteEntity> list, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @POST("3.0/user-activity-groups/{userActivityGroupId}/segments")
+    @Nullable
+    /* renamed from: b */
+    Object m12791b(@Path("userActivityGroupId") @NotNull String str, @Body @NotNull List<SportSegmentRemoteEntity> list, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @POST("3.0/user-activity-groups/{userActivityGroupId}/ping")
+    @Nullable
+    /* renamed from: c */
+    Object m12792c(@Path("userActivityGroupId") @NotNull String str, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @POST("2.0/my/activities/{id}")
+    @Nullable
+    /* renamed from: d */
+    Object m12793d(@Path("id") @NotNull String str, @Body @NotNull SportGpsRemoteEntity sportGpsRemoteEntity, @NotNull Continuation<? super Response<IdRemoteEntity>> continuation);
+
+    @POST("3.0/user-activity-groups/start")
+    @Nullable
+    /* renamed from: e */
+    Object m12794e(@NotNull Continuation<? super Response<SportSessionRemoteEntity>> continuation);
+
+    @GET("4.0/steps/updated-at")
+    @Nullable
+    /* renamed from: f */
+    Object m12795f(@NotNull Continuation<? super Response<StepsInfoRemoteEntity>> continuation);
+
+    @GET("3.0/activity-groups/gps")
+    @Nullable
+    /* renamed from: g */
+    Object m12796g(@NotNull Continuation<? super Response<List<ActivityGroupRemoteEntity>>> continuation);
+
+    @GET("3.0/activity-groups/mobility-reasons")
+    @Nullable
+    /* renamed from: h */
+    Object m12797h(@NotNull Continuation<? super Response<List<ActivityGroupMobilityReasonsRemoteEntity>>> continuation);
+
+    @POST("3.0/user-activity-groups/{userActivityGroupId}/end")
+    @Nullable
+    /* renamed from: i */
+    Object m12798i(@Path("userActivityGroupId") @NotNull String str, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @PATCH("3.0/user-activity-groups/{userActivityGroupId}")
+    @Nullable
+    /* renamed from: j */
+    Object m12799j(@Path("userActivityGroupId") @NotNull String str, @Body @NotNull ActivityGroupMobilityReasonsBodyRemoteEntity activityGroupMobilityReasonsBodyRemoteEntity, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @POST("2.0/my/activities/{id}")
+    @Nullable
+    /* renamed from: k */
+    Object m12800k(@Path("id") @NotNull String str, @Body @NotNull List<StepsRemoteEntity> list, @NotNull Continuation<? super Response<Void>> continuation);
+}

@@ -1,0 +1,26 @@
+public interface TrackerService {
+    @DELETE("2.0/my/integrations/{id}")
+    @Nullable
+    /* renamed from: a */
+    Object m12839a(@Path("id") @NotNull String str, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @GET("2.0/my/integrations")
+    @Nullable
+    /* renamed from: b */
+    Object m12840b(@NotNull Continuation<? super Response<List<TrackerRemoteEntity>>> continuation);
+
+    @POST("2.0/my/integrations/{id}")
+    @Nullable
+    /* renamed from: c */
+    Object m12841c(@Path("id") @NotNull String str, @Body @NotNull TrackerGarminLoginBodyRemoteEntity trackerGarminLoginBodyRemoteEntity, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @POST("2.0/my/integrations/{id}")
+    @Nullable
+    /* renamed from: d */
+    Object m12842d(@Path("id") @NotNull String str, @Body @NotNull TrackerLoginBodyRemoteEntity trackerLoginBodyRemoteEntity, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @POST("2.0/my/integrations/{id}")
+    @Nullable
+    /* renamed from: e */
+    Object m12843e(@Path("id") @NotNull String str, @Body @NotNull FitbitLoginBodyRemoteEntity fitbitLoginBodyRemoteEntity, @NotNull Continuation<? super Response<Void>> continuation);
+}

@@ -1,0 +1,72 @@
+public interface TeamService {
+    @POST("2.0/my/team/image")
+    @Nullable
+    @Multipart
+    /* renamed from: a */
+    Object m12801a(@NotNull @Part MultipartBody.Part part, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @GET("2.0/teams/{id}")
+    @Nullable
+    /* renamed from: b */
+    Object m12802b(@Path("id") @NotNull String str, @NotNull Continuation<? super Response<TeamRemoteEntity>> continuation);
+
+    @POST("2.0/teams/search")
+    @Nullable
+    /* renamed from: c */
+    Object m12803c(@Body @NotNull TeamSearchBodyRemoteEntity teamSearchBodyRemoteEntity, @NotNull Continuation<? super Response<List<TeamSearchRemoteEntity>>> continuation);
+
+    @GET("2.0/my/team/statistics")
+    @Nullable
+    /* renamed from: d */
+    Object m12804d(@NotNull Continuation<? super Response<List<TeamActivityStatsRemoteEntity>>> continuation);
+
+    @POST("2.0/my/team/kick")
+    @Nullable
+    /* renamed from: e */
+    Object m12805e(@Body @NotNull IdRemoteEntity idRemoteEntity, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @GET("3.0/team-detail/{id}")
+    @Nullable
+    /* renamed from: f */
+    Object m12806f(@Path("id") @NotNull String str, @NotNull Continuation<? super Response<TeamDetailsRemoteEntity>> continuation);
+
+    @GET("2.0/teams")
+    @Nullable
+    /* renamed from: g */
+    Object m12807g(@NotNull Continuation<? super Response<List<TeamSearchRemoteEntity>>> continuation);
+
+    @GET("3.0/teams/management")
+    @Nullable
+    /* renamed from: h */
+    Object m12808h(@NotNull Continuation<? super Response<TeamManagementRemoteEntity>> continuation);
+
+    @PATCH("2.0/my/team/captain")
+    @Nullable
+    /* renamed from: i */
+    Object m12809i(@Body @NotNull IdRemoteEntity idRemoteEntity, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @POST("2.0/teams/{id}/join")
+    @Nullable
+    /* renamed from: j */
+    Object m12810j(@Path("id") @NotNull String str, @Body @NotNull JoinTeamRemote joinTeamRemote, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @PATCH("2.0/my/team")
+    @Nullable
+    /* renamed from: k */
+    Object m12811k(@Body @NotNull EditTeamRemoteEntity editTeamRemoteEntity, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @POST("2.0/teams")
+    @Nullable
+    /* renamed from: l */
+    Object m12812l(@Body @NotNull CreateTeamRemote createTeamRemote, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @GET("2.0/my/team")
+    @Nullable
+    /* renamed from: m */
+    Object m12813m(@NotNull Continuation<? super Response<TeamRemoteEntity>> continuation);
+
+    @POST("2.0/my/team/leave")
+    @Nullable
+    /* renamed from: n */
+    Object m12814n(@NotNull Continuation<? super Response<Void>> continuation);
+}

@@ -1,0 +1,16 @@
+public interface CourseService {
+    @POST("2.0/courses/search")
+    @Nullable
+    /* renamed from: a */
+    Object m12712a(@Body @NotNull SearchCourseBodyRemoteEntity searchCourseBodyRemoteEntity, @NotNull Continuation<? super Response<List<CourseRemoteEntity>>> continuation);
+
+    @POST("2.0/my/courses")
+    @Nullable
+    /* renamed from: b */
+    Object m12713b(@Body @NotNull SubmitCourseBodyRemoteEntity submitCourseBodyRemoteEntity, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @GET("2.0/courses/sources")
+    @Nullable
+    /* renamed from: c */
+    Object m12714c(@NotNull Continuation<? super Response<List<String>>> continuation);
+}

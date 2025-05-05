@@ -1,0 +1,102 @@
+public interface UserService {
+    @POST("3.0/users/me/accept-legals-consent")
+    @Nullable
+    /* renamed from: a */
+    Object m12816a(@Body @NotNull UserLegalConsentRemoteEntity userLegalConsentRemoteEntity, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @POST("2.0/users/{id}/boost")
+    @Nullable
+    /* renamed from: b */
+    Object m12817b(@Path("id") @NotNull String str, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @GET("3.0/user-status")
+    @Nullable
+    /* renamed from: c */
+    Object m12818c(@NotNull Continuation<? super Response<UserStatusRemoteEntity>> continuation);
+
+    @GET("3.0/users/me/accept-legals-consent")
+    @Nullable
+    /* renamed from: d */
+    Object m12819d(@NotNull Continuation<? super Response<List<String>>> continuation);
+
+    @PATCH("2.0/my/user")
+    @Nullable
+    /* renamed from: e */
+    Object m12820e(@Body @NotNull UserEditRemoteEntity userEditRemoteEntity, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @PATCH("2.0/my/password")
+    @Nullable
+    /* renamed from: f */
+    Object m12821f(@Body @NotNull UserPasswordRemoteEntity userPasswordRemoteEntity, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @POST("2.0/users/{id}/block")
+    @Nullable
+    /* renamed from: g */
+    Object m12822g(@Path("id") @NotNull String str, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @POST("2.0/users/search")
+    @Nullable
+    /* renamed from: h */
+    Object m12823h(@Body @NotNull TeamSearchBodyRemoteEntity teamSearchBodyRemoteEntity, @NotNull Continuation<? super Response<List<UserSearchRemoteEntity>>> continuation);
+
+    @GET("3.0/user-classifications")
+    @Nullable
+    /* renamed from: i */
+    Object m12824i(@NotNull Continuation<? super Response<UserClassificationsRemoteEntity>> continuation);
+
+    @DELETE("2.0/my/user")
+    @Nullable
+    /* renamed from: j */
+    Object m12825j(@NotNull Continuation<? super Response<Void>> continuation);
+
+    @POST("2.0/users/{id}/unblock")
+    @Nullable
+    /* renamed from: k */
+    Object m12826k(@Path("id") @NotNull String str, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @GET("2.0/users/{id}")
+    @Nullable
+    /* renamed from: l */
+    Object m12827l(@Path("id") @NotNull String str, @NotNull Continuation<? super Response<UserRemoteEntity>> continuation);
+
+    @GET("2.0/users/{id}/statistics")
+    @Nullable
+    /* renamed from: m */
+    Object m12828m(@Path("id") @NotNull String str, @NotNull Continuation<? super Response<UserStatsRemoteEntity>> continuation);
+
+    @GET("2.0/users")
+    @Nullable
+    /* renamed from: n */
+    Object m12829n(@NotNull Continuation<? super Response<List<UserRemoteEntity>>> continuation);
+
+    @GET("3.0/user-profile/{userId}")
+    @Nullable
+    /* renamed from: o */
+    Object m12830o(@Path("userId") @NotNull String str, @NotNull Continuation<? super Response<UserProfileRemoteEntity>> continuation);
+
+    @GET("2.0/my/user")
+    @Nullable
+    /* renamed from: p */
+    Object m12831p(@NotNull Continuation<? super Response<UserRemoteEntity>> continuation);
+
+    @GET("3.0/users/blocked-users")
+    @Nullable
+    /* renamed from: q */
+    Object m12832q(@NotNull Continuation<? super Response<List<UserBlockedRemoteEntity>>> continuation);
+
+    @POST("3.0/user-classifications")
+    @Nullable
+    /* renamed from: r */
+    Object m12833r(@Body @NotNull List<UserClassificationAnswerRemoteEntity> list, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @GET("2.0/my/statistics")
+    @Nullable
+    /* renamed from: s */
+    Object m12834s(@NotNull Continuation<? super Response<UserStatsRemoteEntity>> continuation);
+
+    @POST("2.0/my/image")
+    @Nullable
+    @Multipart
+    /* renamed from: t */
+    Object m12835t(@NotNull @Part MultipartBody.Part part, @NotNull Continuation<? super Response<Void>> continuation);
+}

@@ -1,0 +1,36 @@
+public interface AuthService {
+    @POST("3.0/auth/refresh-token")
+    @Nullable
+    /* renamed from: a */
+    Object m12685a(@Header("Authorization") @NotNull String str, @Header("Refresh-Token") @NotNull String str2, @NotNull Continuation<? super Response<TokenRemoteEntity>> continuation);
+
+    @POST("3.0/auth/register")
+    @Nullable
+    /* renamed from: b */
+    Object m12686b(@Body @NotNull RegisterRemoteEntity registerRemoteEntity, @NotNull Continuation<? super Response<TokenRemoteEntity>> continuation);
+
+    @POST("3.0/auth/login")
+    @Nullable
+    /* renamed from: c */
+    Object m12687c(@Body @NotNull Login login, @NotNull Continuation<? super Response<TokenRemoteEntity>> continuation);
+
+    @POST("2.0/auth/forgot-password")
+    @Nullable
+    /* renamed from: d */
+    Object m12688d(@Body @NotNull ForgotPasswordRemoteEntity forgotPasswordRemoteEntity, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @POST("2.0/users/validate-account/code")
+    @Nullable
+    /* renamed from: e */
+    Object m12689e(@Body @NotNull EmailConfirmationRemoteEntity emailConfirmationRemoteEntity, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @POST("2.0/users/validate-account/send-email")
+    @Nullable
+    /* renamed from: f */
+    Object m12690f(@NotNull Continuation<? super Response<EmailConfirmationRemoteEntity>> continuation);
+
+    @GET("3.0/onboarding/discover")
+    @Nullable
+    /* renamed from: g */
+    Object m12691g(@NotNull Continuation<? super Response<List<OnBoardingDiscoverRemoteEntity>>> continuation);
+}

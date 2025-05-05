@@ -1,0 +1,11 @@
+public interface NotificationService {
+    @POST("/notifications/1.0/tokens-delete")
+    @Nullable
+    /* renamed from: a */
+    Object m12737a(@Body @NotNull NotificationTokenBodyRemoteEntity notificationTokenBodyRemoteEntity, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @POST("/notifications/1.0/tokens-create")
+    @Nullable
+    /* renamed from: b */
+    Object m12738b(@Body @NotNull NotificationTokenBodyRemoteEntity notificationTokenBodyRemoteEntity, @NotNull Continuation<? super Response<Void>> continuation);
+}

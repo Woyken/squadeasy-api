@@ -1,0 +1,6 @@
+public interface AnalyticsService {
+    @POST("2.0/event")
+    @Nullable
+    /* renamed from: a */
+    Object m12684a(@Body @NotNull AnalyticsRemoteEntity analyticsRemoteEntity, @NotNull Continuation<? super Response<Void>> continuation);
+}

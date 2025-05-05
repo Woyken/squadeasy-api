@@ -1,0 +1,31 @@
+public interface ChallengeService {
+    @GET("2.0/my/challenge/marquee")
+    @Nullable
+    /* renamed from: a */
+    Object m12698a(@NotNull Continuation<? super Response<ChallengeMarqueeRemoteEntity>> continuation);
+
+    @GET("3.0/global-missions/over")
+    @Nullable
+    /* renamed from: b */
+    Object m12699b(@NotNull Continuation<? super Response<List<MissionSolidaryRemoteEntity>>> continuation);
+
+    @GET("3.0/my/challenge")
+    @Nullable
+    /* renamed from: c */
+    Object m12700c(@NotNull Continuation<? super Response<ChallengeRemoteEntity>> continuation);
+
+    @GET("3.0/global-missions/active")
+    @Nullable
+    /* renamed from: d */
+    Object m12701d(@NotNull Continuation<? super Response<List<MissionSolidaryRemoteEntity>>> continuation);
+
+    @GET("2.0/my/challenge")
+    @Nullable
+    /* renamed from: e */
+    Object m12702e(@NotNull Continuation<? super Response<LegacyChallengeRemoteEntity>> continuation);
+
+    @GET("2.0/my/challenge/over")
+    @Nullable
+    /* renamed from: f */
+    Object m12703f(@NotNull Continuation<? super Response<ChallengeOverRemoteEntity>> continuation);
+}

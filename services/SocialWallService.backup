@@ -1,0 +1,130 @@
+public interface SocialWallService {
+    @POST("3.0/social/posts/{post_id}")
+    @Nullable
+    /* renamed from: a */
+    Object m12765a(@Path("post_id") @NotNull String str, @Body @NotNull SocialPostMessageBodyRemoteEntity socialPostMessageBodyRemoteEntity, @NotNull Continuation<? super Response<IdRemoteEntity>> continuation);
+
+    @POST("3.0/social/posts")
+    @Nullable
+    @Multipart
+    /* renamed from: b */
+    Object m12766b(@NotNull @Part MultipartBody.Part part, @NotNull @Part MultipartBody.Part part2, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @POST("2.0/social/posts/{post_id}/report")
+    @Nullable
+    /* renamed from: c */
+    Object m12767c(@Path("post_id") @NotNull String str, @Body @NotNull IdRemoteEntity idRemoteEntity, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @GET("2.0/social/posts/{post_id}/liked-by")
+    @Nullable
+    /* renamed from: d */
+    Object m12768d(@Path("post_id") @NotNull String str, @NotNull Continuation<? super Response<List<SocialPostUserLikeRemoteEntity>>> continuation);
+
+    @GET("2.0/socialtags")
+    @Nullable
+    /* renamed from: e */
+    Object m12769e(@NotNull Continuation<? super Response<List<SocialTagRemoteEntity>>> continuation);
+
+    @DELETE("3.0/social/posts/{post_id}/like")
+    @Nullable
+    /* renamed from: f */
+    Object m12770f(@Path("post_id") @NotNull String str, @NotNull Continuation<? super Response<SocialWallPostRemoteEntity>> continuation);
+
+    @PUT("3.0/social/posts/{post_id}/like")
+    @Nullable
+    /* renamed from: g */
+    Object m12771g(@Path("post_id") @NotNull String str, @NotNull Continuation<? super Response<SocialWallPostRemoteEntity>> continuation);
+
+    @GET("3.0/social/posts/{post_id}")
+    @Nullable
+    /* renamed from: h */
+    Object m12772h(@Path("post_id") @NotNull String str, @NotNull Continuation<? super Response<SocialWallPostRemoteEntity>> continuation);
+
+    @POST("3.0/social/posts")
+    @Nullable
+    @Multipart
+    /* renamed from: i */
+    Object m12773i(@NotNull @Part MultipartBody.Part part, @NotNull @Part MultipartBody.Part part2, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @GET("2.0/social/posts/report-reasons")
+    @Nullable
+    /* renamed from: j */
+    Object m12774j(@NotNull Continuation<? super Response<List<ReportReasonRemoteEntity>>> continuation);
+
+    @POST("3.0/social/posts")
+    @Nullable
+    @Multipart
+    /* renamed from: k */
+    Object m12775k(@NotNull @Part MultipartBody.Part part, @NotNull @Part MultipartBody.Part part2, @NotNull @Part MultipartBody.Part part3, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @DELETE("3.0/social/posts/{post_id}")
+    @Nullable
+    /* renamed from: l */
+    Object m12776l(@Path("post_id") @NotNull String str, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @POST("3.0/social/posts")
+    @Nullable
+    /* renamed from: m */
+    Object m12777m(@Body @NotNull SocialPostMessageBodyRemoteEntity socialPostMessageBodyRemoteEntity, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @DELETE("3.0/social/posts/{post_id}/comments/{comment_id}")
+    @Nullable
+    /* renamed from: n */
+    Object m12778n(@Path("post_id") @NotNull String str, @Path("comment_id") @NotNull String str2, @NotNull Continuation<? super Response<SocialWallPostRemoteEntity>> continuation);
+
+    @GET("2.0/blogs/posts/{post_id}")
+    @Nullable
+    /* renamed from: o */
+    Object m12779o(@Path("post_id") @NotNull String str, @NotNull Continuation<? super Response<BlogPostRemoteEntity>> continuation);
+
+    @DELETE("3.0/social/posts/{post_id}/comments/{comment_id}/like")
+    @Nullable
+    /* renamed from: p */
+    Object m12780p(@Path("post_id") @NotNull String str, @Path("comment_id") @NotNull String str2, @NotNull Continuation<? super Response<SocialWallPostRemoteEntity>> continuation);
+
+    @GET("2.0/socialTags/list")
+    @Nullable
+    /* renamed from: q */
+    Object m12781q(@NotNull Continuation<? super Response<SocialTagListRemoteEntity>> continuation);
+
+    @POST("3.0/social/posts/{post_id}/moderate/{actionId}")
+    @Nullable
+    /* renamed from: r */
+    Object m12782r(@Path("post_id") @NotNull String str, @Path("actionId") @NotNull String str2, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @GET("2.0/my/socialtags/available")
+    @Nullable
+    /* renamed from: s */
+    Object m12783s(@NotNull Continuation<? super Response<List<SocialTagRemoteEntity>>> continuation);
+
+    @PATCH("3.0/social/posts/{post_id}")
+    @Nullable
+    /* renamed from: t */
+    Object m12784t(@Path("post_id") @NotNull String str, @Body @NotNull SocialPostEditBodyRemoteEntity socialPostEditBodyRemoteEntity, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @GET("4.0/social/posts")
+    @Nullable
+    /* renamed from: u */
+    Object m12785u(@Nullable @Query("date") String str, @Nullable @Query("filters") String str2, @NotNull Continuation<? super Response<SocialWallPostsRemoteEntity>> continuation);
+
+    @PUT("3.0/social/posts/{post_id}/comments/{comment_id}/like")
+    @Nullable
+    /* renamed from: v */
+    Object m12786v(@Path("post_id") @NotNull String str, @Path("comment_id") @NotNull String str2, @NotNull Continuation<? super Response<SocialWallPostRemoteEntity>> continuation);
+
+    @POST("3.0/social/posts")
+    @Nullable
+    @Multipart
+    /* renamed from: w */
+    Object m12787w(@NotNull @Part MultipartBody.Part part, @NotNull Continuation<? super Response<Void>> continuation);
+
+    @GET("3.0/blogs/posts")
+    @Nullable
+    /* renamed from: x */
+    Object m12788x(@NotNull @Query("sincePostId") String str, @NotNull Continuation<? super Response<List<BlogPostRemoteEntity>>> continuation);
+
+    @GET("3.0/blogs/posts")
+    @Nullable
+    /* renamed from: y */
+    Object m12789y(@NotNull Continuation<? super Response<List<BlogPostRemoteEntity>>> continuation);
+}

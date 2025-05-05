@@ -1,0 +1,6 @@
+public interface TutorialsService {
+    @GET("3.0/tutorials/{helpId}")
+    @Nullable
+    /* renamed from: a */
+    Object m12815a(@Path("helpId") @NotNull String str, @NotNull Continuation<? super Response<List<TutorialRemoteEntity>>> continuation);
+}

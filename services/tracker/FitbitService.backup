@@ -1,0 +1,6 @@
+public interface FitbitService {
+    @POST("oauth2/token")
+    @Nullable
+    /* renamed from: a */
+    Object m12837a(@Header("Authorization") @NotNull String str, @Header("Content-Type") @NotNull String str2, @NotNull @Query("client_id") String str3, @NotNull @Query("grant_type") String str4, @NotNull @Query("redirect_uri") String str5, @NotNull @Query("code") String str6, @NotNull Continuation<? super Response<FitbitAuthRemoteEntity>> continuation);
+}
