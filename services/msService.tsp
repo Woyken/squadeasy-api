@@ -76,22 +76,27 @@ model UserNotificationRemoteEntity {
     title: string;
 }
 
-// TODO, base url is this: https://api.ms.squadeasy.com
 @tag("MS")
-@route("api")
 interface MSService {
     @route("tracker/1.0/chunks")
     @post
-    createTrackerChunk(@body chunkRemoteEntity: ChunkRemoteEntity): string[];
+    createTrackerChunk(
+        ...CommonMsParams,
+        @body chunkRemoteEntity: ChunkRemoteEntity,
+    ): string[];
 
     @route("/notifications/1.0/user-preferences")
     @patch
     updateUserNotificationPreferences(
+        ...CommonMsParams,
+
         @body
         userNotificationBodyRemoteEntity: UserNotificationBodyRemoteEntity,
     ): UserNotificationRemoteEntity[];
 
     @route("/notifications/1.0/user-preferences")
     @get
-    getUserNotificationPreferences(): UserNotificationRemoteEntity[];
+    getUserNotificationPreferences(
+        ...CommonMsParams,
+    ): UserNotificationRemoteEntity[];
 }

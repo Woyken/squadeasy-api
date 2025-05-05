@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build-tsp-json": "tsp compile . --options=@typespec/openapi3.file-type=json",
-    "build-tsp-yaml": "tsp compile . --options=@typespec/openapi3.file-type=yaml",
+    "build-tsp-yaml": "tsp compile .",
     "build": "concurrently \"npm:build-tsp-*\"",
     "compile-zod-client": "openapi-zod-client ./tsp-output/schema/openapi.yaml",
     "serve": "scalar serve tsp-output/schema/openapi.json",

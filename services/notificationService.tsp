@@ -9,13 +9,13 @@ model NotificationTokenBodyRemoteEntity {
     token: string;
 }
 
-// TODO, base url is this: https://api.ms.squadeasy.com
 @tag("Notification")
-@route("api")
 interface NotificationService {
     @route("/notifications/1.0/tokens-delete")
     @post
     deleteNotificationToken(
+        ...CommonMsParams,
+
         @body
         notificationTokenBodyRemoteEntity: NotificationTokenBodyRemoteEntity,
     ): void;
@@ -23,6 +23,8 @@ interface NotificationService {
     @route("/notifications/1.0/tokens-create")
     @post
     createNotificationToken(
+        ...CommonMsParams,
+
         @body
         notificationTokenBodyRemoteEntity: NotificationTokenBodyRemoteEntity,
     ): void;

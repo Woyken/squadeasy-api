@@ -40,25 +40,57 @@ model ChatPostMessageRemoteEntity {
     message: string;
 }
 
-// TODO, base url is this: https://api.ms.squadeasy.com
+/*
+EXAMPLE request
+
+{
+    method: 'GET',
+    headers: {
+    'content-type': 'application/json',
+    'accept-type': 'application/json',
+    'accept-language': 'en-US',
+    platform: 'Android',
+    'platform-version': '14',
+    'platform-name': 'aaaaaaa aaaaaaa',
+    'client-version': '2.6.2',
+    'client-build-version': '2060203',
+    'client-unit-system': 'STANDARD',
+    'client-white-label-id': 'challenge',
+    'vendor-identifier': 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
+    authorization: 'Bearer eyxxx',
+    cookie: 'xxx',
+    host: 'api.ms.squadeasy.com',
+    connection: 'Keep-Alive',
+    'accept-encoding': 'gzip',
+    'user-agent': 'okhttp/5.0.0-alpha.12'
+}
+*/
+
+model CommonMsParams {
+    @header("client-white-label-id") clientWhiteLabelId: "challenge" | string;
+}
+
 @tag("Chat")
-@route("api")
 interface ChatService {
     @route("/chat/api/1.0/chat")
     @get
-    getChats(): ChatConversationRemoteEntity[];
+    getChats(...CommonMsParams): ChatConversationRemoteEntity[];
 
     @route("/chat/api/1.0/chat/broadcast")
     @get
-    getBroadcastChat(): ChatConversationDetailsRemoteEntity;
+    getBroadcastChat(...CommonMsParams): ChatConversationDetailsRemoteEntity;
 
     @route("/chat/api/1.0/chat/direct/{id}")
     @get
-    getDirectChat(@path id: string): ChatConversationDetailsRemoteEntity;
+    getDirectChat(
+        ...CommonMsParams,
+        @path id: string,
+    ): ChatConversationDetailsRemoteEntity;
 
     @route("/chat/api/1.0/chat/{chatType}/chat")
     @post
     postChatMessage(
+        ...CommonMsParams,
         @path chatType: string,
         @body chatPostMessageRemoteEntity: ChatPostMessageRemoteEntity,
     ): void;
@@ -66,17 +98,19 @@ interface ChatService {
     @route("/chat/api/1.0/chat/{chatType}/messages{?sinceDate}")
     @get
     getChatMessages(
+        ...CommonMsParams,
         @path chatType: string,
         @query sinceDate: string,
     ): ChatMessageRemoteEntity[];
 
     @route("/chat/api/1.0/chat/team")
     @get
-    getTeamChat(): ChatConversationDetailsRemoteEntity;
+    getTeamChat(...CommonMsParams): ChatConversationDetailsRemoteEntity;
 
     @route("/chat/api/1.0/chat/{chatType}/{id}/messages{?sinceDate}")
     @get
     getChatMessagesById(
+        ...CommonMsParams,
         @path chatType: string,
         @path id: string,
         @query sinceDate: string,
@@ -85,6 +119,7 @@ interface ChatService {
     @route("/chat/api/1.0/chat/direct/{id}/chat")
     @post
     postDirectChatMessage(
+        ...CommonMsParams,
         @path id: string,
         @body chatPostMessageRemoteEntity: ChatPostMessageRemoteEntity,
     ): void;

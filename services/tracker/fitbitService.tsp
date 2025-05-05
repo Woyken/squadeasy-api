@@ -11,7 +11,6 @@ model FitbitAuthRemoteEntity {
 
 // TODO, base url is this: https://api.fitbit.com
 @tag("Fitbit")
-@route("api")
 interface FitbitService {
     @route("oauth2/token{?client_id,grant_type,redirect_uri,code}")
     @post
