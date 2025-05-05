@@ -28,6 +28,12 @@ using Http;
   
   Repo: <https://github.com/Woyken/squadeasy-api>
   
+  Main api document:
+  <https://woyken.github.io/squadeasy-api>
+  
+  Microservices api document:
+  <https://woyken.github.io/squadeasy-api/microservice-api>
+  
   Authorization flow:
   
   `POST /api/3.0/auth/login` with email and password, returns accessToken and refreshToken

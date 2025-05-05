@@ -28,6 +28,12 @@ using Http;
   
   Repo: <https://github.com/Woyken/squadeasy-api>
   
+  Main api document:
+  <https://woyken.github.io/squadeasy-api>
+  
+  Microservices api document:
+  <https://woyken.github.io/squadeasy-api/microservice-api>
+  
   Same auth as <https://api-challenge.squadeasy.com>
   
   All other endpoints will require accessToken in Authorization header
