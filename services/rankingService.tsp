@@ -76,24 +76,24 @@ interface RankingService {
     @route("3.0/ranking/{type}/{seasonId}/elements{?direction,offsetId}")
     @get
     getRankingElements(
-        @path type: string,
-        @path seasonId: string,
-        @query direction: string,
+        @path type: "season",
+        @path seasonId: "current" | string,
+        @query direction: "top" | "bottom",
         @query offsetId: string,
     ): RankingElementRemoteEntity[];
 
     @route("3.0/ranking/{type}/{seasonId}/elements/me")
     @get
     getMyRankingElement(
-        @path type: string,
-        @path seasonId: string,
+        @path type: "season",
+        @path seasonId: "current" | string,
     ): RankingElementRemoteEntity;
 
     @route("3.0/ranking/{type}/{seasonId}/elements/search{?name,limit,offsetId}")
     @get
     searchRankingElements(
-        @path type: string,
-        @path seasonId: string,
+        @path type: "season",
+        @path seasonId: "current" | string,
         @query name: string,
         @query limit: int32,
         @query offsetId: string,
