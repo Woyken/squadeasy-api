@@ -6,6 +6,7 @@ namespace SquadEasyApi;
 // @Json(name = "message") @NotNull String message
 model SocialPostMessageBodyRemoteEntity {
     message: string;
+    socialtagId?: string;
 }
 
 // @Json(name = "id") @NotNull String id, @Json(name = "firstName") @NotNull String firstName, @Json(name = "lastName") @NotNull String lastName, @Json(name = "teamName") @Nullable String str, @Json(name = "teamId") @Nullable String str2, @Json(name = "image") @Nullable String str3
@@ -206,8 +207,8 @@ interface SocialWallService {
     createSocialPostWith2Params(
         @header `content-type`: "multipart/form-data",
         @multipartBody body: {
-            part: HttpPart<unknown>;
-            part2: HttpPart<unknown>;
+            image: HttpPart<unknown>;
+            socialtagId: HttpPart<string>;
         },
     ): void;
 
@@ -221,9 +222,9 @@ interface SocialWallService {
     createSocialPostWith3Params(
         @header `content-type`: "multipart/form-data",
         @multipartBody body: {
-            part: HttpPart<unknown>;
-            part2: HttpPart<unknown>;
-            part3: HttpPart<unknown>;
+            message: HttpPart<string>;
+            image: HttpPart<unknown>;
+            socialtagId: HttpPart<string>;
         },
     ): void;
 
