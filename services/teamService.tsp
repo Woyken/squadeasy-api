@@ -111,7 +111,7 @@ interface TeamService {
     uploadMyTeamImage(
         @header `content-type`: "multipart/form-data",
         @multipartBody body: {
-            part: HttpPart<unknown>;
+            image: HttpPart<File>;
         },
     ): void;
 

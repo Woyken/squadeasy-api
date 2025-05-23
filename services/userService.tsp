@@ -238,7 +238,7 @@ interface UserService {
     uploadCurrentUserImage(
         @header `content-type`: "multipart/form-data",
         @multipartBody body: {
-            part: HttpPart<unknown>;
+            image: HttpPart<File>;
         },
     ): void;
 }

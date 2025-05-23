@@ -169,8 +169,8 @@ interface SocialWallService {
     createSocialPostWithMedia(
         @header `content-type`: "multipart/form-data",
         @multipartBody body: {
-            part: HttpPart<unknown>;
-            part2: HttpPart<unknown>;
+            image: HttpPart<File>;
+            message: HttpPart<string>;
         },
     ): void;
 
@@ -207,7 +207,7 @@ interface SocialWallService {
     createSocialPostWith2Params(
         @header `content-type`: "multipart/form-data",
         @multipartBody body: {
-            image: HttpPart<unknown>;
+            image: HttpPart<File>;
             socialtagId: HttpPart<string>;
         },
     ): void;
@@ -223,7 +223,7 @@ interface SocialWallService {
         @header `content-type`: "multipart/form-data",
         @multipartBody body: {
             message: HttpPart<string>;
-            image: HttpPart<unknown>;
+            image: HttpPart<File>;
             socialtagId: HttpPart<string>;
         },
     ): void;
@@ -297,7 +297,7 @@ interface SocialWallService {
     createSocialPostWithOnePart(
         @header `content-type`: "multipart/form-data",
         @multipartBody body: {
-            part: HttpPart<unknown>;
+            message: HttpPart<string>;
         },
     ): void;
 
