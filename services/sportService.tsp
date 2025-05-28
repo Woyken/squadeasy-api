@@ -151,5 +151,5 @@ interface SportService {
 
     @route("2.0/my/activities/walk")
     @post
-    addWalkActivity(@path id: string, @body list: StepsRemoteEntity[]): void;
+    addWalkActivity(@body list: StepsRemoteEntity[]): void;
 }
