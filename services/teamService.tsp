@@ -88,7 +88,7 @@ model TeamManagementRemoteEntity {
 
 // (@Json(name = "code") @Nullable String str
 model JoinTeamRemote {
-    code: string;
+    code?: string;
 }
 
 // @Json(name = "name") @NotNull String name, @Json(name = "code") @NotNull String code

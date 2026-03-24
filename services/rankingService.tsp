@@ -66,18 +66,24 @@ model RankingRemoteEntity {
     peloton?: RankingPelotonRemoteEntity;
 }
 
+alias RankingTypePath = "season" | "global" | "groups";
+alias RankingSeasonIdPath = "current" | string;
+
 @tag("Ranking")
 @route("api")
 interface RankingService {
     @route("3.0/ranking/{type}/{seasonId}")
     @get
-    getRanking(@path type: string, @path seasonId: string): RankingRemoteEntity;
+    getRanking(
+        @path type: RankingTypePath,
+        @path seasonId: RankingSeasonIdPath,
+    ): RankingRemoteEntity;
 
     @route("3.0/ranking/{type}/{seasonId}/elements{?direction,offsetId}")
     @get
     getRankingElements(
         @path type: "season",
-        @path seasonId: "current" | string,
+        @path seasonId: RankingSeasonIdPath,
         @query direction: "top" | "bottom",
         @query offsetId: string,
     ): RankingElementRemoteEntity[];
@@ -86,16 +92,16 @@ interface RankingService {
     @get
     getMyRankingElement(
         @path type: "season",
-        @path seasonId: "current" | string,
-    ): RankingElementRemoteEntity;
+        @path seasonId: RankingSeasonIdPath,
+    ): RankingElementRemoteEntity[];
 
     @route("3.0/ranking/{type}/{seasonId}/elements/search{?name,limit,offsetId}")
     @get
     searchRankingElements(
         @path type: "season",
-        @path seasonId: "current" | string,
+        @path seasonId: RankingSeasonIdPath,
         @query name: string,
         @query limit: int32,
-        @query offsetId: string,
+        @query offsetId?: string,
     ): RankingElementRemoteEntity[];
 }

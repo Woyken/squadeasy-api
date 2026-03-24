@@ -6,7 +6,7 @@ namespace SquadEasyMSApi;
 // @Json(name = "deviceId") @NotNull String id, @Json(name = "token") @Nullable String str
 model NotificationTokenBodyRemoteEntity {
     deviceId: string;
-    token: string;
+    token?: string;
 }
 
 @tag("Notification")

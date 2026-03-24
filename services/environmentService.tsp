@@ -3,6 +3,8 @@ using Http;
 
 namespace SquadEasyApi;
 
+alias RegisterStatusType = "forbidden" | "public" | "mandatory_code" | "optional_code" | "undefined";
+
 // @Json(name = "code") @NotNull String code
 model SpaceCodeBodyRemoteEntity {
     code: string;
@@ -10,7 +12,7 @@ model SpaceCodeBodyRemoteEntity {
 
 // @Json(name = "registrationType") @NotNull String registrationType, @Json(name = "isSocialWallEnabled") @Nullable Boolean bool, @Json(name = "isSocialtagEnabled") @Nullable Boolean bool2, @Json(name = "isBlogEnabled") @Nullable Boolean bool3, @Json(name = "isItineraryEnabled") @Nullable Boolean bool4, @Json(name = "isAnalyticsEnabled") @Nullable Boolean bool5, @Json(name = "isUserClassificationEnabled") @Nullable Boolean bool6
 model SettingsFeaturesRemoteEntity {
-    registrationType: string;
+    registrationType: RegisterStatusType;
     isSocialWallEnabled?: boolean;
     isSocialtagEnabled?: boolean;
     isBlogEnabled?: boolean;

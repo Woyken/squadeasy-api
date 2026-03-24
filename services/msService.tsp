@@ -60,19 +60,16 @@ model ChunkRemoteEntity {
     metadata: ChunkMetadataRemoteEntity;
 }
 
-// @NotNull String id, boolean z
+// @NotNull String id, boolean isEnabled
 model UserNotificationBodyRemoteEntity {
     id: string;
-    enabled: boolean;
+    isEnabled: boolean;
 }
 
-// @NotNull String id, boolean z, @NotNull String title
+// @NotNull String id, boolean isEnabled, @NotNull String title
 model UserNotificationRemoteEntity {
     id: string;
-
-    // is this 'z' or 'isEnabled'?
-    isEnabled: string;
-
+    isEnabled: boolean;
     title: string;
 }
 
@@ -82,7 +79,7 @@ interface MSService {
     @post
     createTrackerChunk(
         ...CommonMsParams,
-        @body chunkRemoteEntity: ChunkRemoteEntity,
+        @body chunkRemoteEntities: ChunkRemoteEntity[],
     ): string[];
 
     @route("/notifications/1.0/user-preferences")
@@ -91,7 +88,7 @@ interface MSService {
         ...CommonMsParams,
 
         @body
-        userNotificationBodyRemoteEntity: UserNotificationBodyRemoteEntity,
+        userNotificationBodyRemoteEntities: UserNotificationBodyRemoteEntity[],
     ): UserNotificationRemoteEntity[];
 
     @route("/notifications/1.0/user-preferences")

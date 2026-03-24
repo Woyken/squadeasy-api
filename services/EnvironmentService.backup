@@ -1,21 +1,39 @@
 public interface EnvironmentService {
+
+    /* compiled from: r8-map-id-b68908aa47130193c8519d89d2e40fb261f7a0fdce208338ca4bd3cedca6ce4d */
+    @Metadata(m30291k = 3, m30292mv = {2, 2, 0}, m30294xi = 48)
+    public static final class DefaultImpls {
+    }
+
+    /* renamed from: c */
+    static /* synthetic */ Object m17942c(EnvironmentService environmentService, String str, String str2, Continuation continuation, int i2, Object obj) {
+        if (obj != null) {
+            throw new UnsupportedOperationException("Super calls with default arguments not supported in this target, function: getSettings");
+        }
+        if ((i2 & 1) != 0) {
+            str = "no-cache";
+        }
+        return environmentService.m17944b(str, str2, continuation);
+    }
+
     @POST("2.0/landing/spaces/validate")
     @Nullable
     /* renamed from: a */
-    Object m12715a(@Body @NotNull SpaceCodeBodyRemoteEntity spaceCodeBodyRemoteEntity, @NotNull Continuation<? super Response<IdRemoteEntity>> continuation);
+    Object m17943a(@Body @NotNull SpaceCodeBodyRemoteEntity spaceCodeBodyRemoteEntity, @NotNull Continuation<? super Response<IdRemoteEntity>> continuation);
 
     @GET("3.0/settings")
     @Nullable
     /* renamed from: b */
-    Object m12716b(@Header("Cache-Control") @NotNull String str, @Nullable @Query("id") String str2, @NotNull Continuation<? super Response<SettingsRemoteEntity>> continuation);
+    Object m17944b(@Header("Cache-Control") @NotNull String str, @Nullable @Query("id") String str2, @NotNull Continuation<? super Response<SettingsRemoteEntity>> continuation);
 
     @GET("2.0/entities/{spaceId}")
     @Nullable
-    /* renamed from: c */
-    Object m12717c(@Path("spaceId") @NotNull String str, @NotNull Continuation<? super Response<List<GroupRemoteEntity>>> continuation);
+    /* renamed from: d */
+    Object m17945d(@Path("spaceId") @NotNull String str, @NotNull Continuation<? super Response<List<GroupRemoteEntity>>> continuation);
 
     @GET("2.0/languages")
     @Nullable
-    /* renamed from: d */
-    Object m12718d(@NotNull Continuation<? super Response<List<LanguageRemoteEntity>>> continuation);
+    /* renamed from: e */
+    Object m17946e(@NotNull Continuation<? super Response<List<LanguageRemoteEntity>>> continuation);
 }
+

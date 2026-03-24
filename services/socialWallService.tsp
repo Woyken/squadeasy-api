@@ -3,10 +3,13 @@ using Http;
 
 namespace SquadEasyApi;
 
+alias SocialTagType = "image" | "text" | "socialtag" | "default" | "unknown";
+
+alias SocialTagAvailability = "daily" | "weekly" | "monthly" | "yearly" | "unknown";
+
 // @Json(name = "message") @NotNull String message
 model SocialPostMessageBodyRemoteEntity {
     message: string;
-    socialtagId?: string;
 }
 
 // @Json(name = "id") @NotNull String id, @Json(name = "firstName") @NotNull String firstName, @Json(name = "lastName") @NotNull String lastName, @Json(name = "teamName") @Nullable String str, @Json(name = "teamId") @Nullable String str2, @Json(name = "image") @Nullable String str3
@@ -23,8 +26,8 @@ model SocialPostUserLikeRemoteEntity {
 model SocialTagRemoteEntity {
     id: string;
     name: string;
-    type?: string;
-    availability?: string;
+    type?: SocialTagType;
+    availability?: SocialTagAvailability;
     occurrence?: int32;
     points?: int32;
     image?: string;
@@ -98,6 +101,13 @@ model ReportReasonRemoteEntity {
     title: string;
 }
 
+alias SocialWallModerationActionId =
+    "hide"
+    | "hide_for_user_only"
+    | "removeSocialtag"
+    | "pin"
+    | "unpin";
+
 // @Json(name = "tag") @Nullable String str, @Json(name = "image") @Nullable String str2, @Json(name = "title") @Nullable String str3, @Json(name = "html") @Nullable String str4
 model BlogPostContentRemoteEntity {
     tag?: string;
@@ -116,7 +126,7 @@ model BlogPostRemoteEntity {
 // @Json(name = "id") @NotNull String id, @Json(name = "availability") @Nullable String str, @Json(name = "occurrence") int i2, @Json(name = "remaining") @Nullable Integer num, @Json(name = "name") @NotNull String name, @Json(name = "date") @NotNull String date, @Json(name = "points") int i3, @Json(name = "image") @Nullable String str2, @Json(name = "description") @Nullable String str3
 model SocialTagDetailsRemoteEntity {
     id: string;
-    availability?: string;
+    availability?: SocialTagAvailability;
     occurrence: int32;
     remaining?: int32;
     name: string;
@@ -146,7 +156,7 @@ model OffsetQueryParamsRemoteEntity {
 
 // @Json(name = "filtersAvailable") @Nullable List<SocialTagRemoteEntity> list, @Json(name = "filters") @NotNull List<String> filters, @Json(name = "offsetQueryParams") @Nullable OffsetQueryParamsRemoteEntity offsetQueryParamsRemoteEntity, @Json(name = "isSocialtagAvailable") boolean z, @Json(name = "elements") @Nullable List<SocialWallPostRemoteEntity> list2
 model SocialWallPostsRemoteEntity {
-    filtersAvailable: SocialTagRemoteEntity[];
+    filtersAvailable?: SocialTagRemoteEntity[];
     filters: string[];
     offsetQueryParams?: OffsetQueryParamsRemoteEntity;
     isSocialtagAvailable: boolean;
@@ -264,7 +274,10 @@ interface SocialWallService {
 
     @route("3.0/social/posts/{post_id}/moderate/{actionId}")
     @post
-    moderateSocialPost(@path post_id: string, @path actionId: string): void;
+    moderateSocialPost(
+        @path post_id: string,
+        @path actionId: SocialWallModerationActionId,
+    ): void;
 
     @route("2.0/my/socialtags/available")
     @get
@@ -280,8 +293,8 @@ interface SocialWallService {
     @route("4.0/social/posts{?date,filters}")
     @get
     getSocialPosts(
-        @query date: string,
-        @query filters: string,
+        @query date?: string,
+        @query filters?: string,
     ): SocialWallPostsRemoteEntity;
 
     @route("3.0/social/posts/{post_id}/comments/{comment_id}/like")

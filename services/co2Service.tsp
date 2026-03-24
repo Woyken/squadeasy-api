@@ -3,9 +3,11 @@ using Http;
 
 namespace SquadEasyApi;
 
+alias CO2ReferenceType = "french_citizen" | "default";
+
 // @Json(name = "type") @NotNull String type, @Json(name = "value") double d2, @Json(name = "source") @Nullable String str
 model CO2ReferencesRemoteEntity {
-    type: string;
+    type: CO2ReferenceType;
     value: float64;
     source?: string;
 }
@@ -26,7 +28,7 @@ model CO2EquivalenceRemoteEntity {
 // @Json(name = "totalSaved") @NotNull Co2DetailSavedRemoteEntity totalSaved, @Json(name = "equivalences") @Nullable List<CO2EquivalenceRemoteEntity> list
 model CO2kpiRemoteEntity {
     totalSaved: Co2DetailSavedRemoteEntity;
-    equivalences: CO2EquivalenceRemoteEntity[];
+    equivalences?: CO2EquivalenceRemoteEntity[];
 }
 
 // @Json(name = "icon") @Nullable String str, @Json(name = "reference") @NotNull CO2ReferencesRemoteEntity reference, @Json(name = "user") @NotNull CO2kpiRemoteEntity user, @Json(name = "team") @NotNull CO2kpiRemoteEntity team, @Json(name = "challenge") @Nullable CO2kpiRemoteEntity cO2kpiRemoteEntity

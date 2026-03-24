@@ -3,12 +3,14 @@ using Http;
 
 namespace SquadEasyApi;
 
+alias MissionSolidaryType = "steps" | "distance" | "points" | "default";
+
 // @Json(name = "title") @NotNull String title, @Json(name = "description") @NotNull String description, @Json(name = "status") @NotNull String status, @Json(name = "hasGlobalMission") @Nullable Boolean bool
 model ChallengeMarqueeRemoteEntity {
     title: string;
     description: string;
     status: string;
-    hasGlobalMission: boolean;
+    hasGlobalMission?: boolean;
 }
 
 // @Json(name = "lottie") @Nullable String str, @Json(name = "image") @Nullable String str2
@@ -52,7 +54,7 @@ model MissionSolidaryRemoteEntity {
     objective: float64;
     progress: float64;
     percentage: int32;
-    type: string;
+    type: MissionSolidaryType;
     endAt: string;
     steps?: MissionSolidaryStepRemoteEntity[];
     statistics?: MissionSolidaryStatisticsRemoteEntity;
@@ -79,6 +81,30 @@ model ChallengeRemoteEntity {
     statistics?: ChallengeOverStatisticsRemoteEntity;
 }
 
+// @Json(name = "index") int, @Json(name = "goal") @NotNull String, @Json(name = "progression") double, @Json(name = "objective") double
+model LegacyMissionSolidaryStepRemoteEntity {
+    index: int32;
+    goal: string;
+    progression: float64;
+    objective: float64;
+}
+
+// @Json(name = "title") @NotNull String, @Json(name = "description") @NotNull String, @Json(name = "successDescription") @NotNull String, @Json(name = "failureDescription") @NotNull String, @Json(name = "startAt") @NotNull String, @Json(name = "endAt") @NotNull String, @Json(name = "type") @NotNull String, @Json(name = "objective") double, @Json(name = "progression") double, @Json(name = "status") @NotNull String, @Json(name = "mainGoal") @NotNull String, @Json(name = "steps") @Nullable List<LegacyMissionSolidaryStepRemoteEntity>
+model LegacyMissionSolidaryRemoteEntity {
+    title: string;
+    description: string;
+    successDescription: string;
+    failureDescription: string;
+    startAt: string;
+    endAt: string;
+    type: string;
+    objective: float64;
+    progression: float64;
+    status: string;
+    mainGoal: string;
+    steps?: LegacyMissionSolidaryStepRemoteEntity[];
+}
+
 // @Json(name = "image") @Nullable String str, @Json(name = "publicImage") @Nullable String str2, @Json(name = "spaceImage") @Nullable String str3, @Json(name = "startAt") @NotNull String startAt, @Json(name = "endAt") @NotNull String endAt, @Json(name = "title") @NotNull String title, @Json(name = "description") @NotNull String description, @Json(name = "missions") @Nullable List<LegacyMissionSolidaryRemoteEntity> list
 model LegacyChallengeRemoteEntity {
     image?: string;
@@ -88,7 +114,7 @@ model LegacyChallengeRemoteEntity {
     endAt: string;
     title: string;
     description: string;
-    missions?: MissionSolidaryRemoteEntity[];
+    missions?: LegacyMissionSolidaryRemoteEntity[];
 }
 
 // @Json(name = "id") @NotNull String id, @Json(name = "minimalRank") int i2, @Json(name = "image") @Nullable String str, @Json(name = "publicImage") @Nullable String str2, @Json(name = "defaultImage") @Nullable String str3, @Json(name = "color") @NotNull String color, @Json(name = "name") @NotNull String name, @Json(name = "description") @NotNull String description
@@ -114,7 +140,7 @@ model ChallengeOverRemoteEntity {
     missionSummaryDescription?: string;
     missionSummaryUrl?: string;
     missionsSucceededCount?: int32;
-    missions?: MissionSolidaryRemoteEntity[];
+    missions?: LegacyMissionSolidaryRemoteEntity[];
     statistics: ChallengeOverStatisticsRemoteEntity;
     rank?: int32;
     medal?: LegacyRankingMedalRemoteEntity;

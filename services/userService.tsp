@@ -72,7 +72,7 @@ model UserRemoteEntity {
     languageCode?: string;
     teamId?: string;
     teamName?: string;
-    points?: float;
+    points?: float64;
     entityId?: string;
 }
 
@@ -116,7 +116,7 @@ model UserProfileBoostedByRemoteEntity {
 model UserProfileActivityRemoteEntity {
     id: string;
     name: string;
-    value: float;
+    value: float64;
     SIType: string;
 }
 

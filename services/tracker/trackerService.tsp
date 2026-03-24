@@ -3,8 +3,10 @@ using Http;
 
 namespace SquadEasyApi;
 
+alias TrackerTypeValue = "strava" | "google fit" | "garmin" | "fitbit" | "unknown";
+
 model TrackerRemoteEntity {
-    tracker: string;
+    tracker: TrackerTypeValue;
     isActive: boolean;
     trackerSecret?: string;
     trackerId?: string;
@@ -31,9 +33,13 @@ model FitbitLoginBodyRemoteEntity {
     expiresIn: int32;
 }
 
-@tag("Strava")
+alias StravaIntegrationId = "strava";
+alias GarminIntegrationId = "garmin";
+alias FitbitIntegrationId = "fitbit";
+
+@tag("Tracker")
 @route("api")
-interface StravaService {
+interface TrackerService {
     @route("2.0/my/integrations/{id}")
     @delete
     deleteIntegration(@path id: string): void;
@@ -42,25 +48,27 @@ interface StravaService {
     @get
     getIntegrations(): TrackerRemoteEntity[];
 
-    @route("2.0/my/integrations/garmin")
-    @post
-    connectGarmin(
-        @path id: string,
-
-        @body
-        trackerGarminLoginBodyRemoteEntity: TrackerGarminLoginBodyRemoteEntity,
-    ): void;
-
+    @sharedRoute
     @route("2.0/my/integrations/{id}")
     @post
-    connectIntegration(
-        @path id: string,
+    connectGarmin(
+        @path id: GarminIntegrationId,
+        @body trackerGarminLoginBodyRemoteEntity: TrackerGarminLoginBodyRemoteEntity,
+    ): void;
+
+    @sharedRoute
+    @route("2.0/my/integrations/{id}")
+    @post
+    connectStrava(
+        @path id: StravaIntegrationId,
         @body trackerLoginBodyRemoteEntity: TrackerLoginBodyRemoteEntity,
     ): void;
 
-    @route("2.0/my/integrations/fitbit")
+    @sharedRoute
+    @route("2.0/my/integrations/{id}")
     @post
     connectFitbit(
+        @path id: FitbitIntegrationId,
         @body fitbitLoginBodyRemoteEntity: FitbitLoginBodyRemoteEntity,
     ): void;
 }

@@ -3,6 +3,10 @@ using Http;
 
 namespace SquadEasyMSApi;
 
+alias ChatType = "DIRECT" | "TEAM" | "BROADCAST";
+
+alias ChatMessageType = "TEXT" | "IMAGE" | "VIDEO" | "AUDIO";
+
 // @Json(name = "id") @Nullable String str, @Json(name = "image") @Nullable String str2, @Json(name = "publicImage") @Nullable String str3, @Json(name = "name") @NotNull String name, @Json(name = "updatedAt") @NotNull String updatedAt, @Json(name = "isRead") boolean z, @Json(name = "isMuted") @Nullable Boolean bool, @Json(name = "type") @NotNull String type, @Json(name = "lastMessage") @Nullable String str4
 model ChatConversationRemoteEntity {
     id?: string;
@@ -12,14 +16,14 @@ model ChatConversationRemoteEntity {
     updatedAt: string;
     isRead: boolean;
     isMuted?: boolean;
-    type: string;
+    type: ChatType;
     lastMessage?: string;
 }
 
 // @Json(name = "id") @NotNull String id, @Json(name = "type") @NotNull String type, @Json(name = "message") @Nullable String str, @Json(name = "mediaUrl") @Nullable String str2, @Json(name = "senderId") @NotNull String senderId, @Json(name = "createdAt") @NotNull String createdAt
 model ChatMessageRemoteEntity {
     id: string;
-    type: string;
+    type: ChatMessageType;
     message?: string;
     mediaUrl?: string;
     senderId: string;
@@ -30,7 +34,7 @@ model ChatMessageRemoteEntity {
 model ChatConversationDetailsRemoteEntity {
     createdAt?: string;
     updatedAt?: string;
-    type: string;
+    type: ChatType;
     members?: SquadEasyApi.UserRemoteEntity[];
     messages?: ChatMessageRemoteEntity[];
 }
@@ -70,6 +74,8 @@ model CommonMsParams {
     @header("client-white-label-id") clientWhiteLabelId: "challenge" | string;
 }
 
+alias ChatTypePath = ChatType;
+
 @tag("Chat")
 interface ChatService {
     @route("/chat/api/1.0/chat")
@@ -91,7 +97,7 @@ interface ChatService {
     @post
     postChatMessage(
         ...CommonMsParams,
-        @path chatType: string,
+        @path chatType: ChatTypePath,
         @body chatPostMessageRemoteEntity: ChatPostMessageRemoteEntity,
     ): void;
 
@@ -99,7 +105,7 @@ interface ChatService {
     @get
     getChatMessages(
         ...CommonMsParams,
-        @path chatType: string,
+        @path chatType: ChatTypePath,
         @query sinceDate: string,
     ): ChatMessageRemoteEntity[];
 
@@ -111,7 +117,7 @@ interface ChatService {
     @get
     getChatMessagesById(
         ...CommonMsParams,
-        @path chatType: string,
+        @path chatType: ChatTypePath,
         @path id: string,
         @query sinceDate: string,
     ): ChatMessageRemoteEntity[];

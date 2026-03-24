@@ -9,7 +9,7 @@ model StepsRemoteEntity {
     time: string;
 }
 
-// @Json(name = "steps") int i2, @Json(name = "elevations") @NotNull List<Long> elevations, @Json(name = "startAt") @NotNull String startAt, @Json(name = "endAt") @NotNull String endAt, @Json(name = "distance") int i3, @Json(name = "duration") long j2, @Json(name = "pauseDuration") long j3, @Json(name = "polyline") @NotNull String polyline, @Json(name = "startLatLng") @NotNull List<Double> startLatlng, @Json(name = "endLatLng") @NotNull List<Double> endLatlng, @Json(name = "activityId") @NotNull String activityId
+// @Json(name = "steps") int i2, @Json(name = "elevations") @NotNull List<Long> elevations, @Json(name = "startAt") @NotNull String startAt, @Json(name = "endAt") @NotNull String endAt, @Json(name = "distance") int i3, @Json(name = "duration") long j2, @Json(name = "pauseDuration") long j3, @Json(name = "polyline") @NotNull String polyline, @Json(name = "startLatLng") @NotNull List<Double> startLatLng, @Json(name = "endLatLng") @NotNull List<Double> endLatLng, @Json(name = "activityId") @NotNull String activityId
 model SportSegmentRemoteEntity {
     steps: int32;
     elevations: int64[];
@@ -19,8 +19,8 @@ model SportSegmentRemoteEntity {
     duration: int64;
     pauseDuration: int64;
     polyline: string;
-    startLatlng: float64[];
-    endLatlng: float64[];
+    startLatLng: float64[];
+    endLatLng: float64[];
     activityId: string;
 }
 
@@ -48,7 +48,7 @@ model SportGpsSignalLostRemoteEntity {
     steps: int32;
 }
 
-// @Json(name = "startAt") @NotNull String startAt, @Json(name = "endAt") @NotNull String endAt, @Json(name = "duration") long j2, @Json(name = "distance") int i2, @Json(name = "elevation") int i3, @Json(name = "elevations") @NotNull SportGpsElevationRemoteEntity elevations, @Json(name = "totalStep") int i4, @Json(name = "polyline") @NotNull String polyline, @Json(name = "startLatLng") @NotNull List<Double> startLatlng, @Json(name = "endLatLng") @NotNull List<Double> endLatlng, @Json(name = "pauses") @NotNull List<SportGpsPauseRemoteEntity> pauses, @Json(name = "stepsWhenGPSLost") @NotNull List<SportGpsSignalLostRemoteEntity> stepsWhenGPSLost
+// @Json(name = "startAt") @NotNull String startAt, @Json(name = "endAt") @NotNull String endAt, @Json(name = "duration") long j2, @Json(name = "distance") int i2, @Json(name = "elevation") int i3, @Json(name = "elevations") @NotNull SportGpsElevationRemoteEntity elevations, @Json(name = "totalStep") int i4, @Json(name = "polyline") @NotNull String polyline, @Json(name = "startLatLng") @NotNull List<Double> startLatLng, @Json(name = "endLatLng") @NotNull List<Double> endLatLng, @Json(name = "pauses") @NotNull List<SportGpsPauseRemoteEntity> pauses, @Json(name = "stepsWhenGPSLost") @NotNull List<SportGpsSignalLostRemoteEntity> stepsWhenGPSLost
 model SportGpsRemoteEntity {
     startAt: string;
     endAt: string;
@@ -58,8 +58,8 @@ model SportGpsRemoteEntity {
     elevations: SportGpsElevationRemoteEntity;
     totalStep: int32;
     polyline: string;
-    startLatlng: float64[];
-    endLatlng: float64[];
+    startLatLng: float64[];
+    endLatLng: float64[];
     pauses: SportGpsPauseRemoteEntity[];
     stepsWhenGPSLost: SportGpsSignalLostRemoteEntity[];
 }
@@ -105,13 +105,14 @@ interface SportService {
     @post
     addSportSegments(
         @path userActivityGroupId: string,
-        @body list: SportSegmentRemoteEntity,
+        @body list: SportSegmentRemoteEntity[],
     ): void;
 
     @route("3.0/user-activity-groups/{userActivityGroupId}/ping")
     @post
     pingUserActivityGroup(@path userActivityGroupId: string): void;
 
+    @sharedRoute
     @route("2.0/my/activities/{id}")
     @post
     addSportGpsData(
@@ -149,7 +150,8 @@ interface SportService {
         activityGroupMobilityReasonsBodyRemoteEntity: ActivityGroupMobilityReasonsBodyRemoteEntity,
     ): void;
 
-    @route("2.0/my/activities/walk")
+    @sharedRoute
+    @route("2.0/my/activities/{id}")
     @post
-    addWalkActivity(@body list: StepsRemoteEntity[]): void;
+    addWalkActivity(@path id: string, @body list: StepsRemoteEntity[]): void;
 }

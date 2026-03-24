@@ -3,6 +3,12 @@ using Http;
 
 namespace SquadEasyApi;
 
+alias ActivityTypeValue = "activitygroup" | "gps" | "walk" | "mission" | "quiz" | "bonus" | "media" | "socialtag" | "declared" | "unknown";
+
+alias LegacyMissionType = "SOLO" | "TEAM" | "ACTIVITY_MISSION" | "SOCIAL_MISSION" | "MOBILITY_MISSION";
+
+alias ActivityHistoryStatusValue = "ok" | "cheated" | "pending" | "rejected" | "unknown";
+
 model QuizSummaryRemoteEntity {
     id: string;
     command?: CommandRemoteEntity;
@@ -16,7 +22,7 @@ model QuizSummaryRemoteEntity {
 
 model ActivityMissionHistoryRemoteEntity {
     id: string;
-    type: string;
+    type: ActivityTypeValue;
     name: string;
     date: string;
     points: int32;
@@ -61,7 +67,7 @@ model ActivityGpsDetailsRemoteEntity {
     polyline?: string;
     isMobility?: boolean;
     co2?: float64;
-    isSharable: boolean;
+    isSharable?: boolean;
 }
 
 model ActivityHomeQuizRemoteEntity {
@@ -78,8 +84,8 @@ model ActivityHomeQuizRemoteEntity {
 model ActivitiesHistoryFiltersRemoteEntity {
     filterBy: string;
     sinceDate: string;
-    minDatePossible: string;
-    maxDatePossible: string;
+    minDatePossible?: string;
+    maxDatePossible?: string;
 }
 
 model ActivitiesHistoryHighlightRemoteEntity {
@@ -90,20 +96,20 @@ model ActivitiesHistoryHighlightRemoteEntity {
 
 model LegacyActivityHistoryRemoteEntity {
     id: string;
-    name: string;
-    icon: string;
+    name?: string;
+    icon?: string;
     date: string;
     duration: int32;
     distance: float64;
     points: int32;
-    status: string;
-    command: CommandRemoteEntity;
+    status: ActivityHistoryStatusValue;
+    command?: CommandRemoteEntity;
 }
 
 model ActivitiesHistoryRemoteEntity {
     filters: ActivitiesHistoryFiltersRemoteEntity;
     highlights?: ActivitiesHistoryHighlightRemoteEntity[];
-    activities: LegacyActivityHistoryRemoteEntity[];
+    activities?: LegacyActivityHistoryRemoteEntity[];
 }
 
 model ActivityGpsBodyRemoteEntity {
@@ -117,6 +123,15 @@ model ActivityGpsHistoryRemoteEntity {
     date: string;
     value: int32;
     points: int32;
+}
+
+model ActivityDeclaredHistoryRemoteEntity {
+    id: string;
+    type: string;
+    date: string;
+    value: string;
+    points: int32;
+    activityName: string;
 }
 
 model ActivityCategoryRemoteEntity {
@@ -147,14 +162,29 @@ model ActivityMobilityReasonRemoteEntity {
     iconUrl?: string;
 }
 
+model ActivityDeclarableRemoteEntity {
+    id?: string;
+    name?: string;
+    iconUrl?: string;
+}
+
+model ActivitiesDeclarableRemoteEntity {
+    iconUrl?: string;
+    canDeclare?: boolean;
+    minDuration?: int32;
+    maxDuration?: int32;
+    activities?: ActivityDeclarableRemoteEntity[];
+}
+
 model ActivitiesRemoteEntity {
     categories?: ActivityCategoryRemoteEntity[];
     activities?: ActivityRemoteEntity[];
+    declarableActivities?: ActivitiesDeclarableRemoteEntity;
     mobilityReasons?: ActivityMobilityReasonRemoteEntity[];
 }
 
 model LegacyMissionRemoteEntity {
-    type: string;
+    type: LegacyMissionType;
     isOneShot: boolean;
     goalProgress: int32;
     isDuration: boolean;
@@ -304,6 +334,11 @@ model ActivityQuizPostAnswerRemoteEntity {
     answers?: string[];
 }
 
+model DeclaredActivityRemoteEntity {
+    id: string;
+    duration: int32;
+}
+
 @tag("Activity")
 @route("api")
 interface ActivityService {
@@ -311,7 +346,8 @@ interface ActivityService {
     @get
     getUnansweredQuizzes(): QuizSummaryRemoteEntity[];
 
-    @route("2.0/my/activities/mission")
+    @sharedRoute
+    @route("2.0/my/activities/{activityID}")
     @get
     getActivityMissions(
         @path activityID: string,
@@ -323,6 +359,7 @@ interface ActivityService {
         @path userActivityGroupId: string,
     ): SportSessionSummarySegmentRemoteEntity[];
 
+    @sharedRoute
     @route("3.0/my/activities/{activityID}/{id}")
     @get
     getActivityGpsDetails(
@@ -349,6 +386,7 @@ interface ActivityService {
         @body activityGpsBodyRemoteEntity: ActivityGpsBodyRemoteEntity,
     ): void;
 
+    @sharedRoute
     @route("2.0/my/activities/{activityID}")
     @get
     getActivityGpsHistory(
@@ -358,6 +396,12 @@ interface ActivityService {
     @route("3.0/activities")
     @get
     getActivities(): ActivitiesRemoteEntity;
+
+    @route("3.0/activities/declared")
+    @post
+    postDeclaredActivity(
+        @body declaredActivityRemoteEntity: DeclaredActivityRemoteEntity,
+    ): void;
 
     @route("2.0/my/activities")
     @get
@@ -393,12 +437,21 @@ interface ActivityService {
         @header(#{ name: "Cache-Control" }) cacheControl: string,
     ): ActivityHistoryRemoteEntity;
 
-    @route("2.0/my/activities/quiz")
+    @sharedRoute
+    @route("2.0/my/activities/{activityID}")
+    @get
+    getDeclaredActivityHistory(
+        @path activityID: string,
+    ): ActivityDeclaredHistoryRemoteEntity[];
+
+    @sharedRoute
+    @route("2.0/my/activities/{activityID}")
     @get
     getActivityQuizHistory(
         @path activityID: string,
     ): ActivityQuizHistoryRemoteEntity[];
 
+    @sharedRoute
     @route("2.0/my/activities/{activityID}/{id}")
     @get
     getActivityQuiz(

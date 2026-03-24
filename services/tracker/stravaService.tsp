@@ -14,6 +14,8 @@ model StravaAuthRemoteEntity {
     athlete: StravaAthleteRemoteEntity;
 }
 
+alias StravaGrantType = "authorization_code";
+
 // TODO, base url is this: https://www.strava.com
 @tag("Strava")
 interface StravaService {
@@ -23,6 +25,6 @@ interface StravaService {
         @query client_id: string,
         @query client_secret: string,
         @query code: string,
-        @query grant_type: string,
+        @query grant_type: StravaGrantType,
     ): StravaAuthRemoteEntity;
 }

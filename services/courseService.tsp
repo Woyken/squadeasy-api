@@ -5,7 +5,7 @@ namespace SquadEasyApi;
 
 // @Json(name = "points") @NotNull List<? extends List<Double>> points, @Json(name = "difficulties") @NotNull List<Integer> difficulties, @Json(name = "sources") @NotNull List<String> sources
 model SearchCourseBodyRemoteEntity {
-    points: float64[];
+    points: float64[][];
     difficulties: int32[];
     sources: string[];
 }

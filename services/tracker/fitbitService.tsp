@@ -9,6 +9,8 @@ model FitbitAuthRemoteEntity {
     expires_in: int32;
 }
 
+alias FitbitGrantType = "authorization_code";
+
 // TODO, base url is this: https://api.fitbit.com
 @tag("Fitbit")
 interface FitbitService {
@@ -16,9 +18,9 @@ interface FitbitService {
     @post
     getFitbitToken(
         @header(#{ name: "Authorization" }) authorization: string,
-        @header(#{ name: "Content-Type" }) contentType: string,
+        @header(#{ name: "Content-Type" }) contentType: "application/x-www-form-urlencoded",
         @query client_id: string,
-        @query grant_type: string,
+        @query grant_type: FitbitGrantType,
         @query redirect_uri: string,
         @query code: string,
     ): FitbitAuthRemoteEntity;

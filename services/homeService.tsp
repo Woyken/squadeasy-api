@@ -3,10 +3,12 @@ using Http;
 
 namespace SquadEasyApi;
 
+alias HomeCarouselType = "team" | "user" | "co2" | "challenge" | "global_mission" | "announcement" | "default";
+
 // @Json(name = "commands") @Nullable List<CommandRemoteEntity> list, @Json(name = "retryAt") @Nullable String str
 model HomeUserActivityGroupStatusRemoteEntity {
     commands?: CommandRemoteEntity[];
-    retryAt: string;
+    retryAt?: string;
 }
 // @Json(name = "id") @NotNull String id, @Json(name = "activityIcon") @NotNull String activityIcon, @Json(name = "activityName") @NotNull String activityName, @Json(name = "command") @Nullable CommandRemoteEntity commandRemoteEntity, @Json(name = "date") @Nullable String str, @Json(name = "points") int i2, @Json(name = "goal") double d2, @Json(name = "unit") @NotNull String unit, @Json(name = "isTeam") boolean z, @Json(name = "progress") double d3, @Json(name = "percentage") double d4, @Json(name = "isOver") boolean z2, @Json(name = "isSuccess") boolean z3, @Json(name = "isOneShot") boolean z4
 model MissionRemoteEntity {
@@ -86,7 +88,7 @@ model HomeResponseRemoteEntity {
 
 // @Json(name = "type") @NotNull String type, @Json(name = "id") @Nullable String str, @Json(name = "title") @Nullable String str2, @Json(name = "subtitle") @Nullable String str3, @Json(name = "description") @Nullable String str4, @Json(name = "image") @Nullable String str5, @Json(name = "overImageText") @Nullable String str6, @Json(name = "ordinalNumber") @Nullable Integer num
 model HomeCarouselRemoteEntity {
-    type: string;
+    type: HomeCarouselType;
     id?: string;
     title?: string;
     subtitle?: string;
@@ -134,19 +136,19 @@ model IdRemoteEntity {
     id: string;
 }
 
-// @NotNull String id, @NotNull String option, @Nullable String str
+// @NotNull String id, @NotNull String option, @Nullable String iconUrl
 model SurveyOptionsRemoteEntity {
     id: string;
     option: string;
-    str?: string;
+    iconUrl?: string;
 }
 
-// @NotNull String id, @Nullable String str, @NotNull String description, @Nullable List<SurveyOptionsRemoteEntity> list
+// @NotNull String id, @Nullable String imageUrl, @NotNull String description, @Nullable List<SurveyOptionsRemoteEntity> options
 model SurveyRemoteEntity {
     id: string;
-    str?: string;
+    imageUrl?: string;
     description: string;
-    list?: SurveyOptionsRemoteEntity[];
+    options?: SurveyOptionsRemoteEntity[];
 }
 
 @tag("Home")

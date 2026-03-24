@@ -2,20 +2,21 @@ public interface RankingService {
     @GET("3.0/ranking/{type}/{seasonId}")
     @Nullable
     /* renamed from: a */
-    Object m12739a(@Path("type") @NotNull String str, @Path("seasonId") @NotNull String str2, @NotNull Continuation<? super Response<RankingRemoteEntity>> continuation);
+    Object m17966a(@Path(ClassDiscriminatorModeKt.CLASS_DISCRIMINATOR_KEY) @NotNull String str, @Path("seasonId") @NotNull String str2, @NotNull Continuation<? super Response<RankingRemoteEntity>> continuation);
 
     @GET("3.0/ranking/{type}/{seasonId}/elements")
     @Nullable
     /* renamed from: b */
-    Object m12740b(@Path("type") @NotNull String str, @Path("seasonId") @NotNull String str2, @NotNull @Query("direction") String str3, @NotNull @Query("offsetId") String str4, @NotNull Continuation<? super Response<List<RankingElementRemoteEntity>>> continuation);
+    Object m17967b(@Path(ClassDiscriminatorModeKt.CLASS_DISCRIMINATOR_KEY) @NotNull String str, @Path("seasonId") @NotNull String str2, @NotNull @Query("direction") String str3, @NotNull @Query("offsetId") String str4, @NotNull Continuation<? super Response<List<RankingElementRemoteEntity>>> continuation);
 
     @GET("3.0/ranking/{type}/{seasonId}/elements/me")
     @Nullable
     /* renamed from: c */
-    Object m12741c(@Path("type") @NotNull String str, @Path("seasonId") @NotNull String str2, @NotNull Continuation<? super Response<List<RankingElementRemoteEntity>>> continuation);
+    Object m17968c(@Path(ClassDiscriminatorModeKt.CLASS_DISCRIMINATOR_KEY) @NotNull String str, @Path("seasonId") @NotNull String str2, @NotNull Continuation<? super Response<List<RankingElementRemoteEntity>>> continuation);
 
     @GET("3.0/ranking/{type}/{seasonId}/elements/search")
     @Nullable
     /* renamed from: d */
-    Object m12742d(@Path("type") @NotNull String str, @Path("seasonId") @NotNull String str2, @NotNull @Query("name") String str3, @Query("limit") int i2, @Nullable @Query("offsetId") String str4, @NotNull Continuation<? super Response<List<RankingElementRemoteEntity>>> continuation);
+    Object m17969d(@Path(ClassDiscriminatorModeKt.CLASS_DISCRIMINATOR_KEY) @NotNull String str, @Path("seasonId") @NotNull String str2, @NotNull @Query("name") String str3, @Query("limit") int i2, @Nullable @Query("offsetId") String str4, @NotNull Continuation<? super Response<List<RankingElementRemoteEntity>>> continuation);
 }
+
