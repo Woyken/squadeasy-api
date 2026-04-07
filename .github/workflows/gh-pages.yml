@@ -49,14 +49,6 @@ jobs:
         run: kill $(cat process.pid)
         shell: bash
 
-      - name: Remove default proxy
-        run: sed -i -e 's#data-proxy-url="https://proxy.scalar.com"##g' index.html
-        shell: bash
-
-      - name: Remove default proxy
-        run: sed -i -e 's#data-proxy-url="https://proxy.scalar.com"##g' microservice-api.html
-        shell: bash
-
       - name: Move to dist
         run: |
           mkdir dist
