@@ -23,19 +23,25 @@ import "./services/weatherService.tsp";
 using Http;
 @doc("""
   SquadEasy Microservice API
-  
+
   Reverse engineered API from SquadEasy app (`co.livehappier.squadV2`)
-  
+
   Repo: <https://github.com/Woyken/squadeasy-api>
-  
+
   Main api document:
   <https://woyken.github.io/squadeasy-api>
-  
+
   Microservices api document:
   <https://woyken.github.io/squadeasy-api/microservice-api>
-  
+
+  Microservices api schema JSON:
+  <https://woyken.github.io/squadeasy-api/openapi.SquadEasyMSApi.json>
+
+  Microservices api schema YAML:
+  <https://woyken.github.io/squadeasy-api/openapi.SquadEasyMSApi.yaml>
+
   Same auth as <https://api-challenge.squadeasy.com>
-  
+
   All other endpoints will require accessToken in Authorization header
   """)
 @server("https://api.ms.squadeasy.com", "API endpoint")

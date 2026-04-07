@@ -32,6 +32,12 @@ using Http;
   Main api document:
   <https://woyken.github.io/squadeasy-api>
 
+  Main api schema JSON:
+  <https://woyken.github.io/squadeasy-api/openapi.SquadEasyApi.json>
+
+  Main api schema YAML:
+  <https://woyken.github.io/squadeasy-api/openapi.SquadEasyApi.yaml>
+
   Microservices api document:
   <https://woyken.github.io/squadeasy-api/microservice-api>
 
