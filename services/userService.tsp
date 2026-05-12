@@ -124,7 +124,10 @@ model UserProfileActivityRemoteEntity {
 model UserProfileRemoteEntity {
     id: string;
     isCurrentUser: boolean;
-    name: string;
+    # In the decompiled app model `name` is required string, but actual API response has `name: undefined` and `firstName` and `lastName` as strings.
+    name?: string;
+    firstName: string;
+    lastName: string;
     teamName: string;
     entityName?: string;
     isInSameTeam: boolean;
